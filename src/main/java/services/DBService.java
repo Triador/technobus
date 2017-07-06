@@ -3,30 +3,23 @@ package services;
 /**
  * Created by antonandreev on 06/07/2017.
  */
-import org.apache.commons.dbcp2.BasicDataSource;
 
+import main.JsonIO;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import java.sql.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.TimeZone;
 
 /**
  * Created by antonandreev on 04/07/2017.
  */
 public class DBService {
     private static volatile DBService dbService;
-    private static final String USER = "root";
-    private static final String PASS = "olz3hy4h";
-    private static final String DB_URL = "jdbc:mysql://localhost/schedule?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false";
-    private static final BasicDataSource dataSource = new BasicDataSource();
-
     static {
-        dataSource.setUsername(USER);
-        dataSource.setPassword(PASS);
-        dataSource.setUrl(DB_URL);
+        try {
+            Class.forName("org.h2.Driver");
+        } catch (ClassNotFoundException e) {
+            System.err.println("Error load H2 JDBC driver: " + e.getMessage());
+        }
     }
 
     public static DBService getInstance() {
@@ -40,34 +33,55 @@ public class DBService {
         return dbService;
     }
 
-    public List<String> getNearFrom() {
-        String sql = "SELECT time FROM bus WHERE time > '" + getCurrentTime() + ":00'" + " AND (office = 'ot' OR office = 'ot/do') LIMIT 3";
-        return getNear(sql);
-    }
+    public JSONArray jsonArrayFromH2db(String bdName) {
+        Connection conn = getH2Configuration();
+        JSONArray jsonArray = new JSONArray();
 
-    public List<String> getNearTo() {
-        String sql = "SELECT time FROM bus WHERE time > '" + getCurrentTime() + ":00'" + " AND (office = 'do' OR office = 'ot/do') LIMIT 3";
-        return getNear(sql);
-    }
+        try (Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT time, mask FROM " + bdName)) {
 
-    private List<String> getNear(String sql) {
-        List<String> result = new ArrayList<>();
-
-        try (Connection conn = dataSource.getConnection(); Statement stmt = conn.createStatement()) {
-            ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
-                result.add(rs.getString("time"));
+                JSONObject obj = new JSONObject();
+                obj.put("time", rs.getString("time"));
+                obj.put("mask", rs.getByte("mask"));
+                jsonArray.add(obj);
             }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return jsonArray;
+    }
+
+
+    static void createSimpleDBSchema(Connection con, String input, String bdName) {
+        JsonIO.createH2dbFromJson(input, con, bdName);
+    }
+
+
+    static Connection getH2Configuration() {
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection("jdbc:h2:./h2db", "root", "root");
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return result;
+        return connection;
     }
 
-    private String getCurrentTime() {
-        DateFormat dateFormat = new SimpleDateFormat("HH:mm");
-        dateFormat.setTimeZone(TimeZone.getTimeZone("Europe/Moscow"));
-        Date date = new Date();
-        return dateFormat.format(date);
+    static void selectAll(Connection con, String bdName) {
+
+        try (Statement stmt = con.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT time, mask FROM " + bdName)) {
+
+            while (rs.next()) {
+                System.out.println(rs.getString("time") + " " + rs.getByte("mask"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
+
 }
