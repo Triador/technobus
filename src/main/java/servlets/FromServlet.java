@@ -1,6 +1,6 @@
 package servlets;
 
-import services.DBService;
+import services.H2DBService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,9 +13,9 @@ import java.io.IOException;
  */
 public class FromServlet extends HttpServlet {
 
-    private DBService dbService;
+    private H2DBService dbService;
 
-    public FromServlet(DBService dbService) {
+    public FromServlet(H2DBService dbService) {
         this.dbService = dbService;
     }
 
@@ -24,7 +24,7 @@ public class FromServlet extends HttpServlet {
         resp.setContentType("text/x-json;charset=UTF-8");
         resp.setHeader("Cache-Control", "no-cache");
 
-        String jsonArray = dbService.jsonArrayFromH2db("fromOffice").toJSONString();
+        String jsonArray = dbService.getJsonArray("fromOffice").toJSONString();
 
         resp.getWriter().write(jsonArray);
         resp.getWriter().flush();

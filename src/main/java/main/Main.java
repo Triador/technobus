@@ -6,7 +6,7 @@ import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
-import services.DBService;
+import services.H2DBService;
 import servlets.FromServlet;
 import servlets.ToServlet;
 
@@ -15,7 +15,7 @@ import servlets.ToServlet;
  */
 public class Main {
     public static void main(String[] args) throws Exception {
-        DBService dbService = DBService.getInstance();
+        H2DBService dbService = H2DBService.getInstance();
 
         ServletContextHandler contextHandler = new ServletContextHandler(ServletContextHandler.SESSIONS);
         contextHandler.addServlet(new ServletHolder(new FromServlet(dbService)), "/from");

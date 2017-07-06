@@ -12,11 +12,12 @@ import java.sql.*;
 /**
  * Created by antonandreev on 04/07/2017.
  */
-public class DBService {
-    private static volatile DBService dbService;
+public class H2DBService {
+    private static volatile H2DBService dbService;
     private static final String URL = "jdbc:h2:./h2db";
     private static final String USER = "root";
     private static final String PASSWORD = "root";
+
     static {
         try {
             Class.forName("org.h2.Driver");
@@ -25,19 +26,19 @@ public class DBService {
         }
     }
 
-    public static DBService getInstance() {
+    public static H2DBService getInstance() {
         if (dbService == null) {
-            synchronized (DBService.class) {
+            synchronized (H2DBService.class) {
                 if (dbService == null) {
-                    dbService = new DBService();
+                    dbService = new H2DBService();
                 }
             }
         }
         return dbService;
     }
 
-    public JSONArray jsonArrayFromH2db(String bdName) {
-        Connection conn = getH2Configuration();
+    public JSONArray getJsonArray(String bdName) {
+        Connection conn = getConnect();
         JSONArray jsonArray = new JSONArray();
 
         try (Statement stmt = conn.createStatement();
@@ -58,13 +59,7 @@ public class DBService {
         return jsonArray;
     }
 
-
-    private void createSimpleDBSchema(Connection con, String input, String bdName) {
-        JsonIO.createH2dbFromJson(input, con, bdName);
-    }
-
-
-    private Connection getH2Configuration() {
+    private Connection getConnect() {
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
@@ -72,6 +67,10 @@ public class DBService {
             e.printStackTrace();
         }
         return connection;
+    }
+
+    private void createSimpleDBSchema(Connection con, String input, String bdName) {
+        JsonIO.createH2dbFromJson(con, input, bdName);
     }
 
 }

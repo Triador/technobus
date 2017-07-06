@@ -47,7 +47,6 @@ public class JsonIO {
     public static void writeToJsonFromTxt(String input, String output) {
 
         try (FileWriter file = new FileWriter(output); BufferedReader reader = new BufferedReader(new FileReader(input))) {
-
             JSONArray jsonArray = new JSONArray();
 
             while (reader.ready()) {
@@ -66,7 +65,7 @@ public class JsonIO {
 
     }
 
-    public static void createH2dbFromJson(String input, Connection con, String bdName) {
+    public static void createH2dbFromJson(Connection con, String input, String bdName) {
         JSONParser parser = new JSONParser();
 
         try (Statement stmt = con.createStatement()) {
