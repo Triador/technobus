@@ -14,6 +14,9 @@ import java.sql.*;
  */
 public class DBService {
     private static volatile DBService dbService;
+    private static final String URL = "jdbc:h2:./h2db";
+    private static final String USER = "root";
+    private static final String PASSWORD = "root";
     static {
         try {
             Class.forName("org.h2.Driver");
@@ -42,7 +45,8 @@ public class DBService {
 
             while (rs.next()) {
                 JSONObject obj = new JSONObject();
-                obj.put("time", rs.getString("time"));
+                String time = rs.getString("time");
+                obj.put("time", time.substring(0, time.length() - 3));
                 obj.put("mask", rs.getByte("mask"));
                 jsonArray.add(obj);
             }
@@ -55,33 +59,19 @@ public class DBService {
     }
 
 
-    static void createSimpleDBSchema(Connection con, String input, String bdName) {
+    private void createSimpleDBSchema(Connection con, String input, String bdName) {
         JsonIO.createH2dbFromJson(input, con, bdName);
     }
 
 
-    static Connection getH2Configuration() {
+    private Connection getH2Configuration() {
         Connection connection = null;
         try {
-            connection = DriverManager.getConnection("jdbc:h2:./h2db", "root", "root");
+            connection = DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return connection;
-    }
-
-    static void selectAll(Connection con, String bdName) {
-
-        try (Statement stmt = con.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT time, mask FROM " + bdName)) {
-
-            while (rs.next()) {
-                System.out.println(rs.getString("time") + " " + rs.getByte("mask"));
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
 }

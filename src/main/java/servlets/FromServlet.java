@@ -23,7 +23,9 @@ public class FromServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/x-json;charset=UTF-8");
         resp.setHeader("Cache-Control", "no-cache");
+
         String jsonArray = dbService.jsonArrayFromH2db("fromOffice").toJSONString();
+
         resp.getWriter().write(jsonArray);
         resp.getWriter().flush();
     }
