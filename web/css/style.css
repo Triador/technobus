@@ -50,7 +50,7 @@
     transition: 0.3s all linear;
 }
 
-#placePage, #fullChedulePage {
+#placePageMetro, #fullChedulePage, #placePageTechnopolis {
     display: none;
 }
 
