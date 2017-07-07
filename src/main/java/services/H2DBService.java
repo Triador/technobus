@@ -4,7 +4,6 @@ package services;
  * Created by antonandreev on 06/07/2017.
  */
 
-import main.JsonIO;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import java.sql.*;
@@ -67,10 +66,6 @@ public class H2DBService {
             e.printStackTrace();
         }
         return connection;
-    }
-
-    private void createSimpleDBSchema(Connection con, String input, String bdName) {
-        JsonIO.createH2dbFromJson(con, input, bdName);
     }
 
 }

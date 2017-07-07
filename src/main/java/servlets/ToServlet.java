@@ -1,6 +1,7 @@
 package servlets;
 
 import services.H2DBService;
+import templater.PageGenerator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,16 +22,21 @@ public class ToServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String userAgent = req.getHeader("user-agent");
+        resp.setContentType("text/html;charset=utf-8");
+
+        if (userAgent.contains("Android") || userAgent.contains("Iphone") || userAgent.contains("Phone")) {
+            resp.getWriter().write(PageGenerator.instance().getPage("mobile.html"));
+        }
+        else resp.getWriter().write(PageGenerator.instance().getPage("desktop.html"));
+
         resp.setContentType("text/x-json;charset=UTF-8");
         resp.setHeader("Cache-Control", "no-cache");
 
-        String jsonArray = dbService.getJsonArray("toOffice").toJSONString();
+        String toJsonArray = dbService.getJsonArray("toOffice").toJSONString();
 
-        //вот тут пыталась перенаправить, но он меня послал :((
-        //resp.sendRedirect("/index.html");
-
-
-        resp.getWriter().write(jsonArray);
+        resp.getWriter().write(toJsonArray);
         resp.getWriter().flush();
+        resp.setStatus(HttpServletResponse.SC_OK);
     }
 }

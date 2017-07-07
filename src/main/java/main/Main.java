@@ -8,6 +8,7 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import services.H2DBService;
 import servlets.FromServlet;
+import servlets.FromToServlet;
 import servlets.StartServlet;
 import servlets.ToServlet;
 
@@ -21,11 +22,12 @@ public class Main {
         ServletContextHandler contextHandler = new ServletContextHandler(ServletContextHandler.SESSIONS);
         contextHandler.addServlet(new ServletHolder(new FromServlet(dbService)), "/from");
         contextHandler.addServlet(new ServletHolder(new ToServlet(dbService)), "/to");
-        contextHandler.addServlet(new ServletHolder(new StartServlet(dbService)), "/");
+        contextHandler.addServlet(new ServletHolder(new FromToServlet(dbService)), "/fromTo");
+        contextHandler.addServlet(new ServletHolder(new StartServlet()), "/");
 
 
         ResourceHandler resourceHandler = new ResourceHandler();
-        resourceHandler.setResourceBase("web");
+        resourceHandler.setResourceBase("src/java/main/web");
 
         HandlerList handlers = new HandlerList();
         handlers.setHandlers(new Handler[] {resourceHandler, contextHandler});

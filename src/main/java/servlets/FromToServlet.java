@@ -12,11 +12,11 @@ import java.io.IOException;
 /**
  * Created by antonandreev on 04/07/2017.
  */
-public class FromServlet extends HttpServlet {
+public class FromToServlet extends HttpServlet {
 
     private H2DBService dbService;
 
-    public FromServlet(H2DBService dbService) {
+    public FromToServlet(H2DBService dbService) {
         this.dbService = dbService;
     }
 
@@ -33,8 +33,10 @@ public class FromServlet extends HttpServlet {
         resp.setContentType("text/x-json;charset=UTF-8");
         resp.setHeader("Cache-Control", "no-cache");
 
-        String fromJsonArray = dbService.getJsonArray("fromOffice").toJSONString();
+        String toJsonArray = dbService.getJsonArray("fromOffice").toJSONString();
+        String fromJsonArray = dbService.getJsonArray("toOffice").toJSONString();
 
+        resp.getWriter().write(toJsonArray);
         resp.getWriter().write(fromJsonArray);
         resp.getWriter().flush();
         resp.setStatus(HttpServletResponse.SC_OK);
