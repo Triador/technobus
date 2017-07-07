@@ -26,6 +26,12 @@ public class ToServlet extends HttpServlet {
 
         String jsonArray = dbService.getJsonArray("toOffice").toJSONString();
 
+<<<<<<< HEAD
+=======
+        //вот тут пыталась перенаправить, но он меня послал :((
+        // resp.sendRedirect("/index.html");
+
+>>>>>>> 5c2bbe7e2b8244d26430b8a8dd38531615a34f8d
 
         resp.getWriter().write(jsonArray);
         resp.getWriter().flush();

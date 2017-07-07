@@ -21,7 +21,12 @@ public class Main {
         ServletContextHandler contextHandler = new ServletContextHandler(ServletContextHandler.SESSIONS);
         contextHandler.addServlet(new ServletHolder(new FromServlet(dbService)), "/from");
         contextHandler.addServlet(new ServletHolder(new ToServlet(dbService)), "/to");
+<<<<<<< HEAD
         contextHandler.addServlet(new ServletHolder(new StartServlet(dbService)), "/index.html");
+=======
+        contextHandler.addServlet(new ServletHolder(new StartServlet(dbService)), "/");
+
+>>>>>>> 5c2bbe7e2b8244d26430b8a8dd38531615a34f8d
 
         ResourceHandler resourceHandler = new ResourceHandler();
         resourceHandler.setResourceBase("src/main/java/web");
