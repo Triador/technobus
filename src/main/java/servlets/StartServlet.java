@@ -8,14 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * Created by antonandreev on 04/07/2017.
- */
-public class ToServlet extends HttpServlet {
+public class StartServlet extends HttpServlet {
 
     private H2DBService dbService;
 
-    public ToServlet(H2DBService dbService) {
+    public StartServlet(H2DBService dbService) {
         this.dbService = dbService;
     }
 
@@ -24,13 +21,7 @@ public class ToServlet extends HttpServlet {
         resp.setContentType("text/x-json;charset=UTF-8");
         resp.setHeader("Cache-Control", "no-cache");
 
-        String jsonArray = dbService.getJsonArray("toOffice").toJSONString();
-
-        //вот тут пыталась перенаправить, но он меня послал :((
-        // resp.sendRedirect("/index.html");
-
-
-        resp.getWriter().write(jsonArray);
-        resp.getWriter().flush();
+        //тут выбираем user-agent, но пока перенаправлю в to
+        resp.sendRedirect("/to");
     }
 }
