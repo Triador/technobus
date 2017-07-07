@@ -22,6 +22,7 @@ public class StartServlet extends HttpServlet {
         resp.setHeader("Cache-Control", "no-cache");
 
         //тут выбираем user-agent, но пока перенаправлю в to
+        //
         resp.sendRedirect("/to");
     }
 }
