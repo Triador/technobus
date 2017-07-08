@@ -58,11 +58,7 @@ public class H2DBService {
         return jsonArray;
     }
 
-    public static void main(String[] args) {
-        update("toOffice", 127, 31);
-    }
-
-    public static void update(String bdName, int from, int on) {
+    public void update(String bdName, int from, int on) {
         Connection conn = getConnect();
 
         try (Statement stmt = conn.createStatement()) {
@@ -72,7 +68,7 @@ public class H2DBService {
         }
     }
 
-    private static Connection getConnect() {
+    private Connection getConnect() {
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
