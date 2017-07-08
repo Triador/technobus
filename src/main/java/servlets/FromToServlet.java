@@ -22,22 +22,25 @@ public class FromToServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String userAgent = req.getHeader("user-agent");
+        String userAgent = req.getHeader("user-agent").toUpperCase();
         resp.setContentType("text/html;charset=utf-8");
 
-        if (userAgent.contains("Android") || userAgent.contains("Iphone") || userAgent.contains("Phone")) {
+        if (userAgent.contains("android".toUpperCase())
+                || userAgent.contains("iphone".toUpperCase())
+                || userAgent.contains("phone".toUpperCase())) {
             resp.getWriter().write(PageGenerator.instance().getPage("mobile.html"));
         }
         else resp.getWriter().write(PageGenerator.instance().getPage("desktop.html"));
 
-        resp.setContentType("text/x-json;charset=UTF-8");
-        resp.setHeader("Cache-Control", "no-cache");
+        // два разные content-type pа раз не получится отправить, только один
+        //resp.setContentType("text/x-json;charset=UTF-8");
+        //resp.setHeader("Cache-Control", "no-cache");
 
         String toJsonArray = dbService.getJsonArray("fromOffice").toJSONString();
         String fromJsonArray = dbService.getJsonArray("toOffice").toJSONString();
 
-        resp.getWriter().write(toJsonArray);
-        resp.getWriter().write(fromJsonArray);
+        //resp.getWriter().write(toJsonArray);
+        //resp.getWriter().write(fromJsonArray);
         resp.getWriter().flush();
         resp.setStatus(HttpServletResponse.SC_OK);
     }
