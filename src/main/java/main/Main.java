@@ -25,9 +25,9 @@ public class Main {
         contextHandler.addServlet(new ServletHolder(new FromToServlet(dbService)), "/fromTo");
         contextHandler.addServlet(new ServletHolder(new StartServlet()), "/");
 
-
         ResourceHandler resourceHandler = new ResourceHandler();
-        resourceHandler.setResourceBase("src/java/main/web");
+        //resourceHandler.setResourceBase("./templates");
+        //resourceHandler.setWelcomeFiles(new String[] {"desktop.html"});
 
         HandlerList handlers = new HandlerList();
         handlers.setHandlers(new Handler[] {resourceHandler, contextHandler});
