@@ -6,28 +6,21 @@ import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
-import services.H2DBService;
-import servlets.FromServlet;
-import servlets.FromToServlet;
-import servlets.StartServlet;
-import servlets.ToServlet;
+import services.H2DBServiceImpl;
+import servlets.getScheduleServlet;
 
 /**
  * Created by antonandreev on 06/07/2017.
  */
 public class Main {
     public static void main(String[] args) throws Exception {
-        H2DBService dbService = H2DBService.getInstance();
+        H2DBServiceImpl dbService = H2DBServiceImpl.getInstance();
 
         ServletContextHandler contextHandler = new ServletContextHandler(ServletContextHandler.SESSIONS);
-        contextHandler.addServlet(new ServletHolder(new FromServlet(dbService)), "/from");
-        contextHandler.addServlet(new ServletHolder(new ToServlet(dbService)), "/to");
-        contextHandler.addServlet(new ServletHolder(new FromToServlet(dbService)), "/fromTo");
-        contextHandler.addServlet(new ServletHolder(new StartServlet()), "/");
-
+        contextHandler.addServlet(new ServletHolder(new getScheduleServlet(dbService)), "/schedule");
 
         ResourceHandler resourceHandler = new ResourceHandler();
-        resourceHandler.setResourceBase("src/java/main/web");
+        resourceHandler.setResourceBase("web");
 
         HandlerList handlers = new HandlerList();
         handlers.setHandlers(new Handler[] {resourceHandler, contextHandler});
