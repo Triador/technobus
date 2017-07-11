@@ -25,3 +25,17 @@ document.addEventListener('DOMContentLoaded', function (e) {
         secondList.appendChild(element);
     }
 });
+
+/*
+var xhr = new XMLHttpRequest();
+xhr.open('GET', '0.0.0.0:8081/schedule', false);
+xhr.send();
+
+if (xhr.status != 200) {
+  // обработать ошибку
+  alert( xhr.status + ': ' + xhr.statusText );
+} else {
+  // вывести результат
+  alert( xhr.responseText );
+}
+*/
