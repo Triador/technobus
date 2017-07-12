@@ -1,8 +1,8 @@
 package servlets;
 
 import services.H2DBService;
-import templater.PageGenerator;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,13 +22,16 @@ public class FromServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ServletConfig config = getServletConfig();
+
         String userAgent = req.getHeader("user-agent");
+
         resp.setContentType("text/html;charset=utf-8");
 
         if (userAgent.contains("Android") || userAgent.contains("Iphone") || userAgent.contains("Phone")) {
-            resp.getWriter().write(PageGenerator.instance().getPage("mobile.html"));
+
         }
-        else resp.getWriter().write(PageGenerator.instance().getPage("desktop.html"));
+
 
         resp.setContentType("text/x-json;charset=UTF-8");
         resp.setHeader("Cache-Control", "no-cache");
