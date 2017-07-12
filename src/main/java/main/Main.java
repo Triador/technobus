@@ -20,7 +20,7 @@ public class Main {
         contextHandler.addServlet(new ServletHolder(new getScheduleServlet(dbService)), "/schedule");
 
         ResourceHandler resourceHandler = new ResourceHandler();
-        resourceHandler.setResourceBase("web");
+        resourceHandler.setResourceBase("src/main/web");
 
         HandlerList handlers = new HandlerList();
         handlers.setHandlers(new Handler[] {resourceHandler, contextHandler});

@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
         var json = JSON.parse(xhr.responseText);
     }
 
-    var from = json['fromOffice'];
+    var from = json['toOffice'];
     var firstList = document.getElementsByClassName('curTimetable')[0];
     for (var i = 0; i < from.length; i++) {
         var time = from[i]["time"];
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
         firstList.appendChild(element);
     }
 
-    var to = json["toOffice"];
+    var to = json["fromOffice"];
     var secondList = document.getElementsByClassName('curTimetable')[1];
     for (i = 0; i < from.length; i++) {
         time = to[i]["time"];

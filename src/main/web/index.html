@@ -22,6 +22,7 @@
     <script type="text/javascript" src="js/timer.js"></script>
     <script type="text/javascript" src="js/pagination.js"></script>
     <script type="text/javascript" src="js/map.js"></script>
+    <script type="text/javascript" src="js/filling.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUybwygBuLPhL9rcuoLBurnOFtK87Y0qk&callback=initMap"
             async defer></script>
 </head>
@@ -82,64 +83,10 @@
                         </ul>
                         <div class="tab-content">
                             <div class = "tab-pane active fade in col-time text-center" id="fromMetro">
-                                <ul class="curTimetable col-time-content" style="height: 61vh; overflow-y: scroll;">
-                                    <br>
-                                    <li>7.45</li>
-                                    <li>8.00</li>
-                                    <li>8.10</li>
-                                    <li>8.20</li>
-                                    <li>8.30</li>
-                                    <li>8.35</li>
-                                    <li>8.40</li>
-                                    <li>8.50</li>
-                                    <li>9.00</li>
-                                    <li>9.10</li>
-                                    <li>9.15</li>
-                                    <li>9.20</li>
-                                    <li>9.30</li>
-                                    <li>9.40</li>
-                                    <li>9.50</li>
-                                    <li>9.55</li>
-                                    <li>10.00</li>
-                                    <li>10.10</li>
-                                    <li>10.20</li>
-                                    <li>10.30</li>
-                                    <li>10.35</li>
-                                    <li>10.40</li>
-                                    <li>10.50</li>
-                                    <li>11.00</li>
-                                    <li>11.10</li>
-                                </ul>
+                                <ul class="curTimetable col-time-content" style="height: 61vh; overflow-y: scroll;">                                </ul>
                             </div>
                             <div class = "tab-pane fade col-time text-center" id = "fromOffice">
-                                <ul class="curTimetable col-time-content" style="height: 61vh; overflow-y: scroll;">
-                                    <br>
-                                    <li>9.30</li>
-                                    <li>10.10</li>
-                                    <li>10.50</li>
-                                    <li>11.30</li>
-                                    <li>12.10</li>
-                                    <li>12.50</li>
-                                    <li>13.30</li>
-                                    <li>14.10</li>
-                                    <li>14.50</li>
-                                    <li>15.30</li>
-                                    <li>15.50</li>
-                                    <li>16.30</li>
-                                    <li>16.50</li>
-                                    <li>17.00</li>
-                                    <li>9.50</li>
-                                    <li>9.55</li>
-                                    <li>17.10</li>
-                                    <li>17.30</li>
-                                    <li>17.40</li>
-                                    <li>17.50</li>
-                                    <li>18.00</li>
-                                    <li>18.10</li>
-                                    <li>18.20</li>
-                                    <li>18.30</li>
-                                    <li>18.40</li>
-                                </ul>
+                                <ul class="curTimetable col-time-content" style="height: 61vh; overflow-y: scroll;"></ul>
                             </div>
                         </div>
                       </div>
@@ -157,10 +104,11 @@
         </div>
         <div class = "row text-center">
             <div class = "col-md-6 col-lg-6">
-                <div id = "map"></div>
+                <!--<div id = "map"></div>-->
+                <iframe class = "map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2003.6739331311103!2d30.320184297553283!3d59.854555137548545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46963ab15dc53ff9%3A0xbb67b85306393212!2z0YPQuy4g0JDQstC40LDRhtC40L7QvdC90LDRjw!5e0!3m2!1sru!2sru!4v1499889949654" frameborder="0" style="border:0" allowfullscreen></iframe>
             </div>
             <div class = "col-md-6 col-lg-6">
-                <img src="images/depatureMetro.PNG" style="width: 100%; height: 51vh"/>
+                <img class = "imagePlace" src="images/depatureMetro.PNG"/>
             </div>
         </div>
         <div class = "row text-center">
@@ -168,7 +116,7 @@
             <p style = "font-size: 20px;">Автобус с логотипом "TECHNOPOLIS" под лобовым стеклом</p>
         </div>
         <div class = "row text-center" style="margin-bottom: 15px">
-            <img src="images/bus.jpg" style = "width: 30%"/>
+            <img src="images/bus.jpg" style = "width: 40%"/>
         </div>
     </div>
 </aside>
@@ -181,10 +129,10 @@
         </div>
         <div class = "row text-center">
             <div class = "col-md-6 col-lg-6">
-                <div id = "map1"></div>
+                <iframe class = "map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2005.8523547098243!2d30.324904369065298!3d59.818372614070526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd04c079cb7012ce4!2z0KLQtdGF0L3QvtC_0L7Qu9C40YE!5e0!3m2!1sru!2sru!4v1499890173732" frameborder="0" style="border:0" allowfullscreen></iframe>
             </div>
             <div class = "col-md-6 col-lg-6">
-                <img src="images/depatureTech.jpg" style="width: 100%; height: 51vh"/>
+                <img class = "imagePlace" src="images/depatureTech.jpg"/>
             </div>
         </div>
         <div class = "row text-center">
@@ -192,7 +140,7 @@
             <p style = "font-size: 20px;">Автобус с логотипом "TECHNOPOLIS" под лобовым стеклом</p>
         </div>
         <div class = "row text-center" style="margin-bottom: 15px">
-            <img src="images/bus.jpg" style = "width: 30%"/>
+            <img src="images/bus.jpg" style = "width: 40%"/>
         </div>
     </div>
 </aside>

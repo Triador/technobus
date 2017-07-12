@@ -61,11 +61,12 @@
     margin-top: 60px;
 }
 
-#map {
+.map {
     width: 100%;
-    height: 51vh;
+    height: 50vh;
 }
-#map1 {
+
+.imagePlace{
     width: 100%;
-    height: 51vh;
+    height: 50vh;
 }
