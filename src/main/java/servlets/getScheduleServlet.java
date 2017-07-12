@@ -25,6 +25,7 @@ public class getScheduleServlet extends HttpServlet {
 
         resp.setContentType("text/x-json;charset=UTF-8");
         resp.setHeader("Cache-Control", "no-cache");
+        resp.setHeader("Access-Control-Allow-Origin", "*");
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("fromOffice", dbService.getJsonArray("fromOffice"));
