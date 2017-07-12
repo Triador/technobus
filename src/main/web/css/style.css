@@ -1,0 +1,71 @@
+.nav > li {
+    margin-left: 50px;
+}
+
+.nav-tabs > li, .nav-pills > li {
+    float:none;
+    display:inline-block;
+    *display:inline; /* ie7 fix */
+    zoom:1; /* hasLayout ie7 trigger */
+}
+
+.nav-tabs, .nav-pills {
+    text-align:center;
+}
+
+#timer {
+    margin-bottom: 15px;
+    font-size: 25px;
+}
+
+#fromMetro, #fromOffice {
+    margin-top: 30px;
+}
+
+.curTimetable {
+    list-style: none;
+}
+
+.curTimetable li {
+    width: 220px;
+    font-family: "Trebuchet MS", "Lucida Sans";
+    text-align: center;
+    padding: 5px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border-left: 10px solid #2d2d2d;
+    box-shadow: 2px -2px 5px 0 rgba(0,0,0,.1),
+    -2px -2px 5px 0 rgba(0,0,0,.1),
+    2px 2px 5px 0 rgba(0,0,0,.1),
+    -2px 2px 5px 0 rgba(0,0,0,.1);
+    font-size: 20px;
+    letter-spacing: 2px;
+    transition: 0.3s all linear;
+}
+
+#placePageMetro, #fullChedulePage, #placePageTechnopolis {
+    display: none;
+}
+
+@media only screen and (max-width : 770px) {
+    .nav > li {
+        margin-left: 15px;
+    }
+}
+
+.col-time .col-time-content {
+    display: inline-block;
+}
+
+.tab-page{
+    margin-top: 60px;
+}
+
+#map {
+    width: 100%;
+    height: 51vh;
+}
+#map1 {
+    width: 100%;
+    height: 51vh;
+}

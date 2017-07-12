@@ -1,8 +1,8 @@
 package servlets;
 
-import services.H2DBService;
+import org.json.simple.JSONObject;
+import services.H2DBServiceImpl;
 
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,34 +12,28 @@ import java.io.IOException;
 /**
  * Created by antonandreev on 04/07/2017.
  */
-public class GetDeviceServlet extends HttpServlet {
+public class getScheduleServlet extends HttpServlet {
 
-    private H2DBService dbService;
+    private H2DBServiceImpl dbService;
 
-    public GetDeviceServlet(H2DBService dbService) {
+    public getScheduleServlet(H2DBServiceImpl dbService) {
         this.dbService = dbService;
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ServletConfig config = getServletConfig();
-
-        String userAgent = req.getHeader("user-agent");
-
-        resp.setContentType("text/html;charset=utf-8");
-
-        if (userAgent.contains("Android") || userAgent.contains("Iphone") || userAgent.contains("Phone")) {
-
-        }
-
 
         resp.setContentType("text/x-json;charset=UTF-8");
         resp.setHeader("Cache-Control", "no-cache");
+        resp.setHeader("Access-Control-Allow-Origin", "*");
 
-        String fromJsonArray = dbService.getJsonArray("fromOffice").toJSONString();
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("fromOffice", dbService.getJsonArray("fromOffice"));
+        jsonObject.put("toOffice", dbService.getJsonArray("toOffice"));
 
-        resp.getWriter().write(fromJsonArray);
+        resp.getWriter().write(jsonObject.toJSONString());
         resp.getWriter().flush();
         resp.setStatus(HttpServletResponse.SC_OK);
+
     }
 }
