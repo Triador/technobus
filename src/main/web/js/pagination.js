@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', function (e) {
+    var agent = window.navigator.userAgent;
+    agent = agent.toUpperCase();
+
     var chedulePage = document.getElementById("chedulePage");
     var placePageMetro = document.getElementById("placePageMetro");
     var placePageTechnopolis = document.getElementById("placePageTechnopolis");
@@ -8,6 +11,22 @@ document.addEventListener('DOMContentLoaded', function (e) {
     var placeLink1 = document.getElementById("placeMetro");
     var placeLink2 = document.getElementById("placeTechnopolis");
     var fullCheduleLink = document.getElementById("fullChedule");
+
+    if (agent.indexOf('LINUX') !== -1 ||
+        agent.indexOf('WINDOWS') !== -1 ||
+        agent.indexOf('MACINTOSH') !== -1) {
+        // desktop
+        placePageMetro.style.display = 'none';
+        placePageTechnopolis.style.display = 'none';
+        fullChedulePage.style.display = 'block';
+        chedulePage.style.display = 'none';
+    } else {
+        // mobile
+        placePageMetro.style.display = 'none';
+        placePageTechnopolis.style.display = 'none';
+        fullChedulePage.style.display = 'none';
+        chedulePage.style.display = 'block';
+    }
 
     cheduleLink.addEventListener('click', function(e) {
         placePageMetro.style.display = 'none';
