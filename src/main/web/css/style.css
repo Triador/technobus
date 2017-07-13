@@ -1,5 +1,6 @@
 .nav > li {
     margin-left: 50px;
+    margin-right: 25px;
 }
 
 .nav-tabs > li, .nav-pills > li {
@@ -41,6 +42,7 @@
     font-size: 20px;
     letter-spacing: 2px;
     transition: 0.3s all linear;
+    margin-right: 10px;
 }
 
 #placePageMetro, #fullChedulePage, #placePageTechnopolis {
@@ -69,4 +71,34 @@
 .imagePlace{
     width: 100%;
     height: 50vh;
+}
+
+.inscription{
+    text-align: center;
+    font-size: 20px;
+    color: #dfd8d1;
+}
+
+.column {
+    /*box-sizing: border-box;
+    /*float: left;*/
+    width: 48%;
+    height: 110%;
+    background-color: #ebebeb;
+}
+
+.metroTechColumn {
+    background-color: #333;
+}
+
+
+.timeLine{
+    font-size: 20px;
+}
+
+
+.timeBox{
+    font-size:20px;
+    display: inline-block;
+    margin-left: 18px;
 }
