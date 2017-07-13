@@ -19,20 +19,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
     var row = document.createElement("div");
     row.className = "row timeLine";
 
-    var date = new Date();
-    var options ={
-        hour: 'numeric',
-        minute: 'numeric'
-    };
-    var curTime = date.toLocaleString('ru',options);
-
-    var options1 = {
-        weekday: 'short'
-    };
-    var day = date.toLocaleString('ru',options1);
-
-    // var nextBus = from[0]["time"];
-
     for (var i = 0; i < from.length; i++) {
         var time = from[i]["time"];
         var mask = parseInt(from[i]["mask"]);
@@ -51,7 +37,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
         }
 
         element.appendChild(document.createTextNode(time));
-
         firstList.appendChild(element);
 
         //а вот тут в полное
@@ -83,13 +68,11 @@ document.addEventListener('DOMContentLoaded', function (e) {
         }
 
         element.appendChild(document.createTextNode(time));
-
         secondList.appendChild(element);
 
         funcReturn = toFullPage(fullList,time,mask,hourCounter,row);
         hourCounter = funcReturn[0];
         row = funcReturn[1];
-
     }
 });
 
