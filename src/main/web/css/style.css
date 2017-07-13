@@ -1,5 +1,6 @@
 .nav > li {
     margin-left: 50px;
+    margin-right: 25px;
 }
 
 .nav-tabs > li, .nav-pills > li {
@@ -41,6 +42,7 @@
     font-size: 20px;
     letter-spacing: 2px;
     transition: 0.3s all linear;
+    margin-right: 10px;
 }
 
 .curTimetable li.older {
@@ -74,4 +76,46 @@
 .imagePlace{
     width: 100%;
     height: 50vh;
+}
+
+.inscription{
+    text-align: center;
+    font-size: 18px;
+    color: #dfd8d1;
+}
+
+.column {
+    /*box-sizing: border-box;
+    /*float: left;*/
+    width: 48%;
+    background-color: #fff;
+}
+
+.metroTechColumn {
+    background-color: #333;
+}
+
+
+.timeLine{
+    font-family: "Trebuchet MS", "Lucida Sans";
+    padding:1px 0px;
+    margin-top:3px;
+    border-radius: 5px;
+    border-left: 5px solid #2d2d2d;
+    box-shadow: 2px -2px 5px 0 rgba(0,0,0,.1),
+    -2px -2px 5px 0 rgba(0,0,0,.1),
+    2px 2px 5px 0 rgba(0,0,0,.1),
+    -2px 2px 5px 0 rgba(0,0,0,.1);
+    font-size: 20px;
+    transition: 0.3s all linear;
+}
+
+.timeBox{
+    font-size:17px;
+    display: inline-block;
+    margin-left: 18px;
+}
+
+.aClass{
+    color: #555;
 }
