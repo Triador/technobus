@@ -1,7 +1,7 @@
 package servlets;
 
 import org.json.simple.JSONObject;
-import services.H2DBServiceImpl;
+import services.SheetsService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,10 +14,10 @@ import java.io.IOException;
  */
 public class getScheduleServlet extends HttpServlet {
 
-    private H2DBServiceImpl dbService;
+    private SheetsService sheetsService;
 
-    public getScheduleServlet(H2DBServiceImpl dbService) {
-        this.dbService = dbService;
+    public getScheduleServlet(SheetsService sheetsService) {
+        this.sheetsService = sheetsService;
     }
 
     @Override
@@ -27,8 +27,8 @@ public class getScheduleServlet extends HttpServlet {
         resp.setHeader("Cache-Control", "no-cache");
 
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("fromOffice", dbService.getJsonArray("fromOffice"));
-        jsonObject.put("toOffice", dbService.getJsonArray("toOffice"));
+        jsonObject.put("fromOffice", sheetsService.getSchedule("fromOffice"));
+        jsonObject.put("toOffice", sheetsService.getSchedule("toOffice"));
 
         resp.getWriter().write(jsonObject.toJSONString());
         resp.getWriter().flush();

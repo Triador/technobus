@@ -1,4 +1,4 @@
-package main;
+package services;
 
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
@@ -7,12 +7,14 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.HttpTransport;
-import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.json.JsonFactory;
+import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
-import com.google.api.services.sheets.v4.SheetsScopes;
-import com.google.api.services.sheets.v4.model.*;
 import com.google.api.services.sheets.v4.Sheets;
+import com.google.api.services.sheets.v4.SheetsScopes;
+import com.google.api.services.sheets.v4.model.ValueRange;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,27 +22,54 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
 
-public class Quickstart {
-    /** Application name. */
+/**
+ * Created by antonandreev on 13/07/2017.
+ */
+public class SheetsServiceImpl implements SheetsService {
+    private static volatile SheetsServiceImpl sheetsService;
+
+    public static SheetsServiceImpl getInstance() {
+        if (sheetsService == null) {
+            synchronized (SheetsServiceImpl.class) {
+                if (sheetsService == null) {
+                    sheetsService = new SheetsServiceImpl();
+                }
+            }
+        }
+        return sheetsService;
+    }
+
+    /**
+     * Application name.
+     */
     private static final String APPLICATION_NAME =
             "Google Sheets API Java Quickstart";
 
-    /** Directory to store user credentials for this application. */
+    /**
+     * Directory to store user credentials for this application.
+     */
     private static final java.io.File DATA_STORE_DIR = new java.io.File(
             System.getProperty("user.home"), ".credentials/sheets.googleapis.com-java-quickstart");
 
-    /** Global instance of the {@link FileDataStoreFactory}. */
+    /**
+     * Global instance of the {@link FileDataStoreFactory}.
+     */
     private static FileDataStoreFactory DATA_STORE_FACTORY;
 
-    /** Global instance of the JSON factory. */
+    /**
+     * Global instance of the JSON factory.
+     */
     private static final JsonFactory JSON_FACTORY =
             JacksonFactory.getDefaultInstance();
 
-    /** Global instance of the HTTP transport. */
+    /**
+     * Global instance of the HTTP transport.
+     */
     private static HttpTransport HTTP_TRANSPORT;
 
-    /** Global instance of the scopes required by this quickstart.
-     *
+    /**
+     * Global instance of the scopes required by this quickstart.
+     * <p>
      * If modifying these scopes, delete your previously saved credentials
      * at ~/.credentials/sheets.googleapis.com-java-quickstart
      */
@@ -59,13 +88,14 @@ public class Quickstart {
 
     /**
      * Creates an authorized Credential object.
+     *
      * @return an authorized Credential object.
      * @throws IOException
      */
     public static Credential authorize() throws IOException {
         // Load client secrets.
         InputStream in =
-                Quickstart.class.getResourceAsStream("/client_secret.json");
+                SheetsServiceImpl.class.getResourceAsStream("/client_secret.json");
         GoogleClientSecrets clientSecrets =
                 GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
 
@@ -85,6 +115,7 @@ public class Quickstart {
 
     /**
      * Build and return an authorized Sheets API client service.
+     *
      * @return an authorized Sheets API client service
      * @throws IOException
      */
@@ -95,28 +126,29 @@ public class Quickstart {
                 .build();
     }
 
-    public static void main(String[] args) throws IOException {
-        // Build a new authorized API client service.
+    @Override
+    public JSONArray getSchedule(String listName) throws IOException {
         Sheets service = getSheetsService();
+        String spreadsheetId = "1yajaDHYL4pWad_cYUAab1C2ZypiYTDg2Vqxe3zmWDiI";
 
-        // Prints the names and majors of students in a sample spreadsheet:
-        // https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
-        String spreadsheetId = "1X06iAzaWOatiEaF9sJOMP0CYo3NbTMPcd5LKpEJr5FI";
-        String range = "Class Data";
         ValueRange response = service.spreadsheets().values()
-                .get(spreadsheetId, range)
+                .get(spreadsheetId, listName)
                 .execute();
         List<List<Object>> values = response.getValues();
+
+        JSONArray jsonArray = new JSONArray();
+
         if (values == null || values.size() == 0) {
             System.out.println("No data found.");
         } else {
-            System.out.println("Name, Major");
-            for (List row : values) {
-                // Print columns A and E, which correspond to indices 0 and 4.
-                System.out.printf("%s, %s\n", row.get(0), row.get(4));
+            for (int i = 1; i < values.size(); i++) {
+                JSONObject obj = new JSONObject();
+                obj.put("time", values.get(i).get(0));
+                obj.put("mask", Integer.parseInt((String)values.get(i).get(1), 2));
+                jsonArray.add(obj);
             }
         }
+        return jsonArray;
     }
-
-
 }
+

@@ -6,7 +6,8 @@ import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
-import services.H2DBServiceImpl;
+import services.SheetsService;
+import services.SheetsServiceImpl;
 import servlets.getScheduleServlet;
 
 /**
@@ -14,10 +15,10 @@ import servlets.getScheduleServlet;
  */
 public class Main {
     public static void main(String[] args) throws Exception {
-        H2DBServiceImpl dbService = H2DBServiceImpl.getInstance();
+        SheetsService sheetsService = SheetsServiceImpl.getInstance();
 
         ServletContextHandler contextHandler = new ServletContextHandler(ServletContextHandler.SESSIONS);
-        contextHandler.addServlet(new ServletHolder(new getScheduleServlet(dbService)), "/schedule");
+        contextHandler.addServlet(new ServletHolder(new getScheduleServlet(sheetsService)), "/schedule");
 
         ResourceHandler resourceHandler = new ResourceHandler();
         resourceHandler.setResourceBase("web");
