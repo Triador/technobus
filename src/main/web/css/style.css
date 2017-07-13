@@ -43,6 +43,11 @@
     transition: 0.3s all linear;
 }
 
+.curTimetable li.older {
+    background-color: #a7a6a6;
+    text-decoration: line-through;
+}
+
 #placePageMetro, #fullChedulePage, #placePageTechnopolis {
     display: none;
 }
