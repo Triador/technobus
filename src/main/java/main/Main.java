@@ -26,7 +26,7 @@ public class Main {
         HandlerList handlers = new HandlerList();
         handlers.setHandlers(new Handler[] {resourceHandler, contextHandler});
 
-        Server server = new Server(80);
+        Server server = new Server(Integer.parseInt(args[0]));
         server.setHandler(handlers);
 
         server.join();
