@@ -6,9 +6,13 @@ import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
+import org.eclipse.jetty.webapp.WebAppContext;
 import services.SheetsService;
 import services.SheetsServiceImpl;
 import servlets.getScheduleServlet;
+
+import java.net.URL;
+import java.security.ProtectionDomain;
 
 /**
  * Created by antonandreev on 06/07/2017.
@@ -23,8 +27,13 @@ public class Main {
         ResourceHandler resourceHandler = new ResourceHandler();
         resourceHandler.setResourceBase("src/main/web");
 
+        ProtectionDomain domain = Main.class.getProtectionDomain();
+        URL location = domain.getCodeSource().getLocation();
+        WebAppContext webapp = new WebAppContext();
+        webapp.setWar(location.toExternalForm());
+
         HandlerList handlers = new HandlerList();
-        handlers.setHandlers(new Handler[] {resourceHandler, contextHandler});
+        handlers.setHandlers(new Handler[] {resourceHandler, contextHandler, webapp});
 
         Server server = new Server(Integer.parseInt(args[0]));
         server.setHandler(handlers);

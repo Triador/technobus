@@ -2,6 +2,7 @@ package servlets;
 
 import org.json.simple.JSONObject;
 import services.SheetsService;
+import services.SheetsServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -28,8 +29,8 @@ public class getScheduleServlet extends HttpServlet {
         resp.setHeader("Access-Control-Allow-Origin", "*");
 
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("fromOffice", sheetsService.getSchedule("fromOffice"));
-        jsonObject.put("toOffice", sheetsService.getSchedule("toOffice"));
+        jsonObject.put("fromOffice", sheetsService.getSchedule(SheetsServiceImpl.FROM_IFFICE));
+        jsonObject.put("toOffice", sheetsService.getSchedule(SheetsServiceImpl.TO_OFFICE));
 
         resp.getWriter().write(jsonObject.toJSONString());
         resp.getWriter().flush();
