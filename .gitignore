@@ -23,4 +23,4 @@ gradlew*
 
 *.xml
 *.iml
-!/pom.xml
+#!/pom.xml

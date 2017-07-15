@@ -1,9 +1,5 @@
 package services;
 
-import java.io.IOException;
-
-import java.net.URL;
-
 import com.google.gdata.client.spreadsheet.SpreadsheetService;
 import com.google.gdata.data.spreadsheet.CustomElementCollection;
 import com.google.gdata.data.spreadsheet.ListEntry;
@@ -11,6 +7,9 @@ import com.google.gdata.data.spreadsheet.ListFeed;
 import com.google.gdata.util.ServiceException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+
+import java.io.IOException;
+import java.net.URL;
 
 public class SheetsServiceImpl implements SheetsService {
     private static volatile SheetsServiceImpl shetsService1Impl;
