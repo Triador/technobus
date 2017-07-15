@@ -16,7 +16,7 @@ public class SheetsServiceImpl implements SheetsService {
     private static volatile SheetsServiceImpl shetsService1Impl;
     public static final String TO_OFFICE =
             "https://spreadsheets.google.com/feeds/list/1yajaDHYL4pWad_cYUAab1C2ZypiYTDg2Vqxe3zmWDiI/1/public/values";
-    public static final String FROM_IFFICE =
+    public static final String FROM_OFFICE =
             "https://spreadsheets.google.com/feeds/list/1yajaDHYL4pWad_cYUAab1C2ZypiYTDg2Vqxe3zmWDiI/2/public/values";
 
     public static SheetsServiceImpl getInstance() {

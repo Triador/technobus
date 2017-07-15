@@ -29,9 +29,8 @@ public class getScheduleServlet extends HttpServlet {
         resp.setHeader("Access-Control-Allow-Origin", "*");
 
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("fromOffice", sheetsService.getSchedule(SheetsServiceImpl.FROM_IFFICE));
+        jsonObject.put("fromOffice", sheetsService.getSchedule(SheetsServiceImpl.FROM_OFFICE));
         jsonObject.put("toOffice", sheetsService.getSchedule(SheetsServiceImpl.TO_OFFICE));
-
         resp.getWriter().write(jsonObject.toJSONString());
         resp.getWriter().flush();
         resp.setStatus(HttpServletResponse.SC_OK);
