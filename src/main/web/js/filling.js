@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
     var minutes = date.getMinutes();
     var day = date.getDay();
     day = 5; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    hours = 20;
+    hours = 15;
     day = getDayMask(day);
 
     var xhr = new XMLHttpRequest();

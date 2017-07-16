@@ -36,9 +36,12 @@ document.addEventListener('DOMContentLoaded', function (e) {
         if (nextBusTo == undefined){
             nextBusTo = "noBusTo";
         }
-        var b = location.href.split("#");
-        b = b[0];
-        window.location.href = b + "#" + nextBusTo;
+        var element = document.getElementById("fromMetro");
+        element.style.display = 'block';
+        element = document.getElementById("fromOffice");
+        element.style.display = 'none';
+        b = document.location.href.split("#");
+        document.location.href = b[0] + '#' + nextBusTo;
     });
 
     placeLink1.addEventListener('click', function(e) {
