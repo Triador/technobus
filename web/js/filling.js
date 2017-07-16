@@ -89,9 +89,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
 		element.appendChild(document.createTextNode("Сегодня нет больше ни одного рейса :("));
 		secondList.appendChild(element);
     }
-    xhr.open('GET', 'http://localhost:8081/update', false);
-    xhr.send();
-    xhr.close();
 });
 
 
