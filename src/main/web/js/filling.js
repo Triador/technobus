@@ -1,8 +1,13 @@
+var nextBusTo;
+var nextBusFrom;
+
 document.addEventListener('DOMContentLoaded', function (e) {
     var date = new Date();
     var hours = date.getHours();
     var minutes = date.getMinutes();
     var day = date.getDay();
+    day = 5; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    hours = 20;
     day = getDayMask(day);
 
     var xhr = new XMLHttpRequest();
@@ -21,30 +26,37 @@ document.addEventListener('DOMContentLoaded', function (e) {
     var row = document.createElement("div");
     row.className = "row timeLine";
 
-
-    var noneBus = true;
+    var oldTime = true;
     for (var i = 0; i < from.length; i++) {
         var time = from[i]["time"];
         var mask = parseInt(from[i]["mask"]);
         var mask1 = mask & day;
         if (mask1 === day){
+            var element1 = document.createElement("a");
+            element1.name = "to" + time;
             element = document.createElement("li");
              // parsing time from json
             var arr = time.split(':');
             if (parseInt(arr[0]) < hours ||
                 (parseInt(arr[0]) === hours && (arr[1] < minutes))) {
                     element.classList.add('older');
+            }
+            else{
+                if (oldTime){
+                    nextBusTo = "to" + time;
+                    oldTime = false;
                 }
+            }
             element.appendChild(document.createTextNode(time));
+            firstList.appendChild(element1);
             firstList.appendChild(element);
-            noneBus = false;
         }
         //а вот тут в полное
         var funcReturn = toFullPage(fullList,time,mask,hourCounter,row);
         hourCounter = funcReturn[0];
         row = funcReturn[1];
     }
-    if (noneBus){
+    if (oldTime){
         element = document.createElement("li");
         element.appendChild(document.createTextNode("Сегодня нет больше ни одного рейса :("));
         firstList.appendChild(element);
@@ -62,30 +74,37 @@ document.addEventListener('DOMContentLoaded', function (e) {
     var to = json["fromOffice"];
     var secondList = document.getElementsByClassName('curTimetable')[1];
 	
-	noneBus = true;
+	oldTime = true;
+
     for (i = 0; i < to.length; i++) {
         time = to[i]["time"];
         mask = to[i]["mask"];
 		mask1 = mask & day;
 		if (mask1 === day){
 			element = document.createElement("li");
-
+            element1 = document.createElement("a");
+            element1.name = "from" + time;
 			arr = time.split(':');
 			if (parseInt(arr[0]) < hours ||
 				(parseInt(arr[0]) === hours && (arr[1] < minutes))) {
 				element.classList.add('older');
 			}
-			element.appendChild(document.createTextNode(time + mask));
+            else{
+                if (oldTime){
+                    nextBusFrom = "from" + time;
+                    oldTime = false;
+                }
+            }
+			element.appendChild(document.createTextNode(time));
+            secondList.appendChild(element1);
 			secondList.appendChild(element);
-			noneBus = false;
 		}
 		
 		funcReturn = toFullPage(fullList,time,mask,hourCounter,row);
         hourCounter = funcReturn[0];
         row = funcReturn[1];
 	}
-	var o = 0;
-    if (noneBus){
+    if (oldTime){
 	    var element = document.createElement("li");
 		element.appendChild(document.createTextNode("Сегодня нет большени одного рейса :("));
 		secondList.appendChild(element);

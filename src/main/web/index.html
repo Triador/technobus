@@ -22,6 +22,7 @@
     <script type="text/javascript" src="js/timer.js"></script>
     <script type="text/javascript" src="js/pagination.js"></script>
     <script type="text/javascript" src="js/filling.js"></script>
+    <script type="text/javascript" src="js/nextBus.js"></script>
 </head>
 <body>
 <div class="navbar navbar-inverse navbar-fixed-top">
@@ -71,15 +72,15 @@
                 <div class = "col-md-12">
                     <div class="tabs">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#fromMetro" data-toggle="tab">От Московской</a></li>
-                            <li><a href="#fromOffice" data-toggle="tab">От офиса</a></li>
+                            <li class="active"><button id = "toButton" onclick="changeNextBus('to')" class = "btn btn-default btn-outline" style = "background: #373737; color:white" href="#fromMetro" data-toggle="tab">От Московской</button></li>
+                            <li><button id = "fromButton" onclick="changeNextBus('from')" class = "btn btn-default btn-outline" href="#from16:00" data-toggle="tab" style = "background: white; color:#373737">От офиса</button></li>
                         </ul>
                         <div class="tab-content">
                             <div class = "tab-pane active fade in col-time text-center" id="fromMetro">
-                                <ul class="curTimetable col-time-content" style="height: 61vh; overflow-y: scroll;"></ul>
+                                <ul class="curTimetable col-time-content"></ul>
                             </div>
                             <div class = "tab-pane fade col-time text-center" id = "fromOffice">
-                                <ul class="curTimetable col-time-content" style="height: 61vh; overflow-y: scroll;"><br></ul>
+                                <ul class="curTimetable col-time-content"></ul>
                             </div>
                         </div>
                       </div>

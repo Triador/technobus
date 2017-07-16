@@ -15,11 +15,14 @@ document.addEventListener('DOMContentLoaded', function (e) {
     if (agent.indexOf('LINUX') !== -1 ||
         agent.indexOf('WINDOWS') !== -1 ||
         agent.indexOf('MACINTOSH') !== -1) {
-        // desktop
+        // desktop!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         placePageMetro.style.display = 'none';
         placePageTechnopolis.style.display = 'none';
-        fullChedulePage.style.display = 'block';
-        chedulePage.style.display = 'none';
+
+        // fullChedulePage.style.display = 'block';
+        // chedulePage.style.display = 'none';
+        fullChedulePage.style.display = 'none';
+        chedulePage.style.display = 'block';
     } else {
         // mobile
         placePageMetro.style.display = 'none';

@@ -25,6 +25,8 @@
 
 .curTimetable {
     list-style: none;
+    height: 61vh;
+    overflow-y: scroll;
 }
 
 .curTimetable li {
@@ -116,6 +118,16 @@
     margin-left: 18px;
 }
 
-.aClass{
-    color: #555;
+.btn-outline {
+    background-color: transparent;
+    color: inherit;
+    transition: all .5s;
+}
+
+.btn-default.btn-outline:hover {
+    color: #fff8f1;
+}
+
+.btn-default.btn-outline:focus{
+    outline: none;
 }
