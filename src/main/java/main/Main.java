@@ -21,7 +21,7 @@ public class Main {
         contextHandler.addServlet(new ServletHolder(new getScheduleServlet(sheetsService)), "/schedule");
 
         ResourceHandler resourceHandler = new ResourceHandler();
-        resourceHandler.setResourceBase("src/main/web");
+        resourceHandler.setResourceBase("web");
 
         HandlerList handlers = new HandlerList();
         handlers.setHandlers(new Handler[] {resourceHandler, contextHandler});
