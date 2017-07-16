@@ -20,12 +20,12 @@
 }
 
 #fromMetro, #fromOffice {
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
 .curTimetable {
     list-style: none;
-    height: 61vh;
+    height: 63vh;
     overflow-y: scroll;
 }
 
@@ -128,4 +128,18 @@
 
 .btn-default.btn-outline:focus{
     outline: none;
+}
+
+#toButton{
+    margin-top:3px;
+    width: 108px;
+}
+
+#fromButton{
+    margin-top:3px;
+    width: 108px;
+}
+
+#tw_8_469887296{
+    /*margin-top:1px;*/
 }
