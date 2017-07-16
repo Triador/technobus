@@ -6,8 +6,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
     var hours = date.getHours();
     var minutes = date.getMinutes();
     var day = date.getDay();
-    day = 5; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    hours = 15;
     day = getDayMask(day);
 
     var xhr = new XMLHttpRequest();
@@ -60,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
         element = document.createElement("li");
         element.id = "noBusTo";
         nextBusTo = "noBusTo";
-        element.appendChild(document.createTextNode("Сегодня нет больше ни одного рейса :("));
+        element.appendChild(document.createTextNode("На сегодня рейсов больше нет :("));
         firstList.appendChild(element);
     }
     var txt = document.createElement("p");
@@ -110,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
 	    var element = document.createElement("li");
         element.id = "noBusFrom";
         nextBusFrom = "noBusFrom";
-		element.appendChild(document.createTextNode("Сегодня нет большени одного рейса :("));
+		element.appendChild(document.createTextNode("На сегодня рейсов больше нет :("));
 		secondList.appendChild(element);
     }
 });

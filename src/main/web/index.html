@@ -70,20 +70,34 @@
 
             <div class="row">
                 <div class = "col-md-12">
-                    <div class="tabs">
+                    <!--<div class="tabs">-->
+                        <!--<ul class="nav nav-tabs">-->
+                            <!--<li class="active"><button id = "toButton" onclick="changeNextBus('to')" class = "btn btn-default btn-outline" style = "background: #373737; color:white"data-toggle="tab">От Московской</button></li>-->
+                            <!--<li><button id = "fromButton" onclick="changeNextBus('from')" class = "btn btn-default btn-outline" data-toggle="tab" style = "background: white; color:#373737">От офиса</button></li>-->
+                        <!--</ul>-->
+                        <!--<div class="tab-content">-->
+                            <!--<div class = "tab-pane active fade in col-time text-center" id="fromMetro">-->
+                                <!--<ul class="curTimetable col-time-content"></ul>-->
+                            <!--</div>-->
+                            <!--<div class = "tab-pane fade col-time text-center" id = "fromOffice">-->
+                                <!--<ul class="curTimetable col-time-content"></ul>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                      <!--</div>-->
+                    <div class = "tabs">
                         <ul class="nav nav-tabs">
-                            <li class="active"><button id = "toButton" onclick="changeNextBus('to')" class = "btn btn-default btn-outline" style = "background: #373737; color:white"data-toggle="tab">От Московской</button></li>
-                            <li><button id = "fromButton" onclick="changeNextBus('from')" class = "btn btn-default btn-outline" data-toggle="tab" style = "background: white; color:#373737">От офиса</button></li>
+                            <li><button id = "toButton" onclick="changeNextBus('to')" class = "btn btn-default btn-outline" style = "background: #373737; color:white;">От Московской</button></li>
+                            <li><button id = "fromButton" onclick="changeNextBus('from')" class = "btn btn-default btn-outline" style = "background: white; color:#373737">От офиса</button></li>
                         </ul>
-                        <div class="tab-content">
-                            <div class = "tab-pane active fade in col-time text-center" id="fromMetro">
+                        <div >
+                            <div class = "col-time text-center" id="fromMetro">
                                 <ul class="curTimetable col-time-content"></ul>
                             </div>
-                            <div class = "tab-pane fade col-time text-center" id = "fromOffice">
+                            <div class = " col-time text-center" id = "fromOffice">
                                 <ul class="curTimetable col-time-content"></ul>
                             </div>
                         </div>
-                      </div>
+                    </div>
                 </div>
             </div>
         </div>

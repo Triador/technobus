@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
         element.style.display = 'block';
         element = document.getElementById("fromOffice");
         element.style.display = 'none';
-        b = document.location.href.split("#");
+        var b = document.location.href.split("#");
         document.location.href = b[0] + '#' + nextBusTo;
     });
 
