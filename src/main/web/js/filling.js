@@ -15,8 +15,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
     var minutes = date.getMinutes();
     var day = date.getDay();
     day = getDayMask(day);
-    day = 5;
-    hours = 15;
 
     var from = json['toOffice'];
     var firstList = document.getElementsByClassName('curTimetable')[0];
