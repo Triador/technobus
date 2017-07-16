@@ -2,6 +2,7 @@ var nextBusTo;
 var nextBusFrom;
 
 document.addEventListener('DOMContentLoaded', function (e) {
+    //
 
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'http://localhost:8081/schedule', false);
