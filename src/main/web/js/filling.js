@@ -149,6 +149,7 @@ function toFullPage(list, time, mask, hourCounter, row){
         days += ")";
         box.appendChild(document.createTextNode(time + days));
     }
+    box.setAttribute("name","box");
     row.appendChild(box);
     list.appendChild(row);
     return [hourCounter,row];
