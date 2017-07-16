@@ -15,5 +15,18 @@ function changeLocale(loc){
         }
     }
 
+    if (loc === 'ru'){
+        element = document.getElementById("tw_8_845372483");
+        element.style = "display:none";
+        element = document.getElementById("tw_8_865927444");
+        element.style = "display:block";
+    }
+    else{
+        element = document.getElementById("tw_8_845372483");
+        element.style = "display:block";
+        element = document.getElementById("tw_8_865927444");
+        element.style = "display:none";
+    }
+
 
 }

@@ -13,5 +13,5 @@
   "scheduleOfBus":"Schedule of the TECHNOPOLIS bus",
   "fromTechnopolis":"From TECHNOPOLIS",
   "noBus":"There aren't any buses today :(",
-  "onlyWeekdays":"The bus runs only on weekdays"
+  "onlyWeekDays":"The bus runs only on weekdays"
 }

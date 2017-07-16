@@ -61,12 +61,12 @@ document.addEventListener('DOMContentLoaded', function (e) {
         element.id = "noBusTo";
         nextBusTo = "noBusTo";
         element.appendChild(document.createTextNode("На сегодня рейсов больше нет :("));
-        element.name = "noBus";
+        element.setAttribute("name", "noBus");
         firstList.appendChild(element);
     }
     var txt = document.createElement("p");
     txt.innerText = "Автобус ходит только по будним дням!";
-    txt.name = 'onlyWeekDays';
+    txt.setAttribute("name",'onlyWeekDays');
     txt.style = "margin-top: 20px; font-size: 20px; text-align: center";
     fullList.appendChild(txt);
 
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
         element.id = "noBusFrom";
         nextBusFrom = "noBusFrom";
 		element.appendChild(document.createTextNode("На сегодня рейсов больше нет :("));
-        element.name = "noBus";
+        element.setAttribute("name","noBus");
 		secondList.appendChild(element);
     }
 });
