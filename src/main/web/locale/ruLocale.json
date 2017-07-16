@@ -1,0 +1,17 @@
+{"scheduleMenu":"Расписание",
+"placeMenu": "Место посадки",
+"placeMetroMenu": "Около метро Московская",
+"placeOfficeMenu": "Около Технополиса",
+"fullScheduleMenu":"Полное расписание",
+"fromMetro":"От метро",
+"fromOffice":"От офиса",
+  "departureFromMetro":"Посадка у метро Московская:",
+  "addressFromMetro":"Московский проспект, д. 189",
+  "busName":"Автобус с логотипом \"TECHNOPOLIS\" под лобовым стеклом",
+  "departureFromOffice":"Посадка у TECHNOPOLIS:",
+  "addressFromOffice":"У центрального входа №2, кафе LAKKA",
+  "scheduleOfBus":"Расписание автобуса TECHNOPOLIS",
+  "fromTechnopolis":"От Технополиса",
+  "noBus":"На сегодня рейсов больше нет :(",
+  "onlyWeekdays":"Автобус ходит только по будним дням!"
+}

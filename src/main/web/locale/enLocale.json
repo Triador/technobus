@@ -1,0 +1,17 @@
+{"scheduleMenu":"Shuttle Bus",
+  "placeMenu": "Depature",
+  "placeMetroMenu": "Departure from Moskovskaya Metro Station",
+  "placeOfficeMenu": "Departure from Technopolis",
+  "fullScheduleMenu":"Full schedule",
+"fromMetro":"From metro",
+"fromOffice":"From office",
+"departureFromMetro":"Departure from Moskovskaya Metro Station:",
+"addressFromMetro":"Moskovsky prospect, 189",
+  "busName":"There is a logo TECHNOPOLIS behind the windscreen",
+  "departureFromOffice":"Departure from Technopolis:",
+  "addressFromOffice":"Main entrance №2 ( Café LAKKA)",
+  "scheduleOfBus":"Schedule of the TECHNOPOLIS bus",
+  "fromTechnopolis":"From TECHNOPOLIS",
+  "noBus":"There aren't any buses today :(",
+  "onlyWeekdays":"The bus runs only on weekdays"
+}

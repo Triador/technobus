@@ -2,11 +2,6 @@ var nextBusTo;
 var nextBusFrom;
 
 document.addEventListener('DOMContentLoaded', function (e) {
-    var date = new Date();
-    var hours = date.getHours();
-    var minutes = date.getMinutes();
-    var day = date.getDay();
-    day = getDayMask(day);
 
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'http://localhost:8081/schedule', false);
@@ -14,6 +9,14 @@ document.addEventListener('DOMContentLoaded', function (e) {
     if (xhr.status === 200) {
         var json = JSON.parse(xhr.responseText);
     }
+
+    var date = new Date();
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var day = date.getDay();
+    day = getDayMask(day);
+    day = 5;
+    hours = 15;
 
     var from = json['toOffice'];
     var firstList = document.getElementsByClassName('curTimetable')[0];
@@ -23,7 +26,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
     var hourCounter = 6;
     var row = document.createElement("div");
     row.className = "row timeLine";
-
     var oldTime = true;
     for (var i = 0; i < from.length; i++) {
         var time = from[i]["time"];
@@ -59,10 +61,12 @@ document.addEventListener('DOMContentLoaded', function (e) {
         element.id = "noBusTo";
         nextBusTo = "noBusTo";
         element.appendChild(document.createTextNode("На сегодня рейсов больше нет :("));
+        element.name = "noBus";
         firstList.appendChild(element);
     }
     var txt = document.createElement("p");
-    txt.appendChild(document.createTextNode("Автобус ходит только по будним дням!"));
+    txt.innerText = "Автобус ходит только по будним дням!";
+    txt.name = 'onlyWeekDays';
     txt.style = "margin-top: 20px; font-size: 20px; text-align: center";
     fullList.appendChild(txt);
 
@@ -109,6 +113,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
         element.id = "noBusFrom";
         nextBusFrom = "noBusFrom";
 		element.appendChild(document.createTextNode("На сегодня рейсов больше нет :("));
+        element.name = "noBus";
 		secondList.appendChild(element);
     }
 });

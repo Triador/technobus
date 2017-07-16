@@ -140,6 +140,15 @@
     width: 108px;
 }
 
-#tw_8_469887296{
-    /*margin-top:1px;*/
+.lang{
+    width: 30px;
+    height: 30px;
+    background-size: 100%;
+    border: none;
+    outline-color: #3f3f3f;
+    border-radius: 30px;
+}
+
+.lang:hover{
+    cursor: pointer;
 }

@@ -23,39 +23,54 @@
     <script type="text/javascript" src="js/pagination.js"></script>
     <script type="text/javascript" src="js/filling.js"></script>
     <script type="text/javascript" src="js/nextBus.js"></script>
+    <script type="text/javascript" src="js/lang.js"></script>
 </head>
 <body>
 <div class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#responsive-menu">
-        <span class = "sr-only">Открыть навигацию</span>
-        <span class = "icon-bar"></span>
-        <span class = "icon-bar"></span>
-        <span class = "icon-bar"></span>
-      </button>
-      <!--<a class = "navbar-brand" href = "#">Logo</a>-->
-    </div>
-    <div class = "collapse navbar-collapse" id="responsive-menu">
-        <div class = "col-md-12 col-time text-center">
-            <div class = "col-time-content">
-                <ul class = "nav navbar-nav">
-                    <li><a href="#" id = "schedule">Расписание</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="place">Место посадки</a>
-                        <ul class="dropdown-menu">
-                            <li><a href = "#" id = "placeMetro">Около метро "Московская"</a></li>
-                            <li><a href = "#" id = "placeTechnopolis">Около Технополиса</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class = "dropdown-toggle" data-toggle="dropdown" id="fullChedule">Полное расписание</a>
-                    </li>
-                </ul>
-            </div>
+      <div class = "row">
+          <div class = "col-md-1 col-sm-1 col-xs-1">
+              <div class="btn-group">
+                  <button type="button" class = 'lang' style='background: url("/images/en.png");' onclick = "changeLocale('en')"></button>
+                  <button type="button" class = 'lang' style="background: url('/images/ru.png');" onclick = "changeLocale('ru')"></button>
+              </div>
+          </div>
+          <div class = "col-md-10 col-sm-10 col-xs-10">
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#responsive-menu">
+                      <span class = "sr-only">Открыть навигацию</span>
+                      <span class = "icon-bar"></span>
+                      <span class = "icon-bar"></span>
+                      <span class = "icon-bar"></span>
+                  </button>
+                  <!--<a class = "navbar-brand" href = "#">Logo</a>-->
+              </div>
+              <div class = "collapse navbar-collapse" id="responsive-menu">
+                  <div class = "col-md-1 col-sm-1 col-xs-1 text-center">
 
-        </div>
-    </div>
+                  </div>
+                  <div class = "col-md-10 col-sm-10 col-xs-10 col-time text-center">
+                      <div class = "col-time-content">
+                          <ul class = "nav navbar-nav">
+                              <li><a href="#" id = "schedule" name = "scheduleMenu">Расписание</a></li>
+                              <li class="dropdown">
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="place" name = "placeMenu">Место посадки</a>
+                                  <ul class="dropdown-menu">
+                                      <li><a href = "#" id = "placeMetro" name = "placeMetroMenu">Около метро "Московская"</a></li>
+                                      <li><a href = "#" id = "placeTechnopolis" name = "placeOfficeMenu">Около Технополиса</a></li>
+                                  </ul>
+                              </li>
+                              <li class="dropdown">
+                                  <a href="#" class = "dropdown-toggle" data-toggle="dropdown" id="fullChedule" name = "fullScheduleMenu">Полное расписание</a>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class = "col-md-1 col-sm-1 col-xs-1"></div>
+              </div>
+          </div>
+          <div class = "col-md-1 col-sm-1 col-xs-1"></div>
+      </div>
   </div>
 </div>
 
@@ -67,8 +82,6 @@
                 <script type="text/javascript"> var css_file=document.createElement("link"); css_file.setAttribute("rel","stylesheet"); css_file.setAttribute("type","text/css"); css_file.setAttribute("href","//s.bookcdn.com//css/cl/bw-cl-150x100t.css"); document.getElementsByTagName("head")[0].appendChild(css_file);</script> <div id="tw_8_469887296"><div style="width:150px; height:100px; margin: 0 auto;"><a id = "weekDay"></a><br/></div></div> <script type="text/javascript"> document.getElementById("weekDay").innerText = "hi"; function setWidgetData_469887296(data){ if(typeof(data) != 'undefined' && data.results.length > 0) { for(var i = 0; i < data.results.length; ++i) { var objMainBlock = ''; var params = data.results[i]; objMainBlock = document.getElementById('tw_'+params.widget_type+'_'+params.widget_id); if(objMainBlock !== null) objMainBlock.innerHTML = params.html_code; } } } var clock_timer_469887296 = -1; </script> <script type="text/javascript" charset="UTF-8" src="https://widgets.booked.net/time/info?ver=2&domid=589&type=8&id=469887296&scode=124&city_id=18398&wlangid=20&mode=1&details=0&background=rgba(255,255,255,0.6)&color=ffffff&add_background=ffffff&add_color=ffffff&head_color=ffffff&border=0&transparent=1"></script>
                 <!-- clock widget end -->
 
-
-
                 <!--<div style="text-align: center">-->
                     <!--<p id="timer">Сейчас:</p>-->
                 <!--</div>-->
@@ -78,8 +91,8 @@
                 <div class = "col-md-12">
                     <div class = "tabs">
                         <ul class="nav nav-tabs">
-                            <li><button id = "toButton" onclick="changeNextBus('to')" class = "btn btn-default btn-outline text-center" style = "background: #373737; color:white;">В офис</button></li>
-                            <li><button id = "fromButton" onclick="changeNextBus('from')" class = "btn btn-default btn-outline text-center" style = "background: white; color:#373737">От офиса</button></li>
+                            <li><button id = "toButton" onclick="changeNextBus('to')" class = "btn btn-default btn-outline text-center" style = "background: #373737; color:white;" name = "fromMetro">От метро</button></li>
+                            <li><button id = "fromButton" onclick="changeNextBus('from')" class = "btn btn-default btn-outline text-center" style = "background: white; color:#373737" name = "fromOffice">От офиса</button></li>
                         </ul>
                         <div >
                             <div class = "col-time text-center" id="fromMetro">
@@ -99,8 +112,8 @@
 <aside id="placePageMetro">
     <div class = "container tab-page">
         <div class = "row text-center">
-            <p style = "font-size: 20px; font-style: inherit">Посадка у метро Московская:</p>
-            <p style = "font-size: 20px;">Московский проспект, д. 189</p>
+            <p style = "font-size: 20px; font-style: inherit" name = "departureFromMetro">Посадка у метро Московская:</p>
+            <p style = "font-size: 20px;" name = "addressFromMetro">Московский проспект, д. 189</p>
         </div>
         <div class = "row text-center">
             <div class = "col-md-6 col-lg-6">
@@ -112,7 +125,7 @@
         </div>
         <div class = "row text-center">
             <hr>
-            <p style = "font-size: 20px;">Автобус с логотипом "TECHNOPOLIS" под лобовым стеклом</p>
+            <p style = "font-size: 20px;" name = "busName">Автобус с логотипом "TECHNOPOLIS" под лобовым стеклом</p>
         </div>
         <div class = "row text-center" style="margin-bottom: 15px">
             <img src="images/bus.jpg" style = "width: 20%"/>
@@ -123,8 +136,8 @@
 <aside id="placePageTechnopolis">
     <div class = "container tab-page">
         <div class = "row text-center">
-            <p style = "font-size: 20px; font-style: inherit">Посадка у ТЕХНОПОЛИС:</p>
-            <p style = "font-size: 20px;">У центрального входа №2, кафе LAKKA</p>
+            <p style = "font-size: 20px; font-style: inherit" name = "departureFromOffice">Посадка у TECHNOPOLIS:</p>
+            <p style = "font-size: 20px;" name = "addressFromOffice">У центрального входа №2, кафе LAKKA</p>
         </div>
         <div class = "row text-center">
             <div class = "col-md-6 col-lg-6">
@@ -136,7 +149,7 @@
         </div>
         <div class = "row text-center">
             <hr>
-            <p style = "font-size: 20px;">Автобус с логотипом "TECHNOPOLIS" под лобовым стеклом</p>
+            <p style = "font-size: 20px;" name = "busName">Автобус с логотипом "TECHNOPOLIS" под лобовым стеклом</p>
         </div>
         <div class = "row text-center" style="margin-bottom: 15px">
             <img src="images/bus.jpg" style = "width: 40%"/>
@@ -146,17 +159,17 @@
 
 <aside id="fullChedulePage">
     <div class = "container tab-page">
-        <p style="text-align: center; font-size: 20px;">Расписание автобуса TECHNOPOLIS</p>
+        <p style="text-align: center; font-size: 20px;" name = "scheduleOfBus">Расписание автобуса TECHNOPOLIS</p>
         <div class = "row">
             <div class = "col-md-5 col-sm-5 col-xs-5 column" style="margin-top: 1px;">
                 <div class = "row metroTechColumn">
-                    <p class = "inscription">От метро</p>
+                    <p class = "inscription" name = "fromMetro">От метро</p>
                 </div>
             </div>
             <div class = "col-md-2 col-sm-2 col-xs-2" style="width: 2%;"></div>
             <div class = "col-md-5 col-sm-5 col-xs-5 column">
                 <div class = "row metroTechColumn">
-                    <p class = "inscription">От Технополиса</p>
+                    <p class = "inscription" name = "fromTechnopolis">От Технополиса</p>
                 </div>
             </div>
         </div>
