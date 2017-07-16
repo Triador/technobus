@@ -21,6 +21,7 @@ public class UpdateServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setHeader("Access-Control-Allow-Origin", "*");
         sheetsService.updateJson();
         resp.setStatus(HttpServletResponse.SC_OK);
     }
