@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
     if (xhr.status === 200) {
         var json = JSON.parse(xhr.responseText);
     }
-
     var date = new Date();
     var hours = date.getHours();
     var minutes = date.getMinutes();
