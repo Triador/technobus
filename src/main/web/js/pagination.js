@@ -18,11 +18,8 @@ document.addEventListener('DOMContentLoaded', function (e) {
         // desktop!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         placePageMetro.style.display = 'none';
         placePageTechnopolis.style.display = 'none';
-
-        // fullChedulePage.style.display = 'block';
-        // chedulePage.style.display = 'none';
-        fullChedulePage.style.display = 'none';
-        chedulePage.style.display = 'block';
+        fullChedulePage.style.display = 'block';
+        chedulePage.style.display = 'none';
     } else {
         // mobile
         placePageMetro.style.display = 'none';
@@ -36,6 +33,12 @@ document.addEventListener('DOMContentLoaded', function (e) {
         placePageTechnopolis.style.display = 'none';
         fullChedulePage.style.display = 'none';
         chedulePage.style.display = 'block';
+        if (nextBusTo == undefined){
+            nextBusTo = "noBusTo";
+        }
+        var b = location.href.split("#");
+        b = b[0];
+        window.location.href = b + "#" + nextBusTo;
     });
 
     placeLink1.addEventListener('click', function(e) {

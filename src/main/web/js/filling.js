@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
         var mask1 = mask & day;
         if (mask1 === day){
             var element1 = document.createElement("a");
-            element1.name = "to" + time;
+            element1.id = "to" + time;
             element = document.createElement("li");
              // parsing time from json
             var arr = time.split(':');
@@ -58,6 +58,8 @@ document.addEventListener('DOMContentLoaded', function (e) {
     }
     if (oldTime){
         element = document.createElement("li");
+        element.id = "noBusTo";
+        nextBusTo = "noBusTo";
         element.appendChild(document.createTextNode("Сегодня нет больше ни одного рейса :("));
         firstList.appendChild(element);
     }
@@ -83,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
 		if (mask1 === day){
 			element = document.createElement("li");
             element1 = document.createElement("a");
-            element1.name = "from" + time;
+            element1.id = "from" + time;
 			arr = time.split(':');
 			if (parseInt(arr[0]) < hours ||
 				(parseInt(arr[0]) === hours && (arr[1] < minutes))) {
@@ -106,6 +108,8 @@ document.addEventListener('DOMContentLoaded', function (e) {
 	}
     if (oldTime){
 	    var element = document.createElement("li");
+        element.id = "noBusFrom";
+        nextBusFrom = "noBusFrom";
 		element.appendChild(document.createTextNode("Сегодня нет большени одного рейса :("));
 		secondList.appendChild(element);
     }
