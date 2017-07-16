@@ -8,7 +8,8 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import services.SheetsService;
 import services.SheetsServiceImpl;
-import servlets.getScheduleServlet;
+import servlets.GetScheduleServlet;
+import servlets.UpdateServlet;
 
 /**
  * Created by antonandreev on 06/07/2017.
@@ -18,10 +19,11 @@ public class Main {
         SheetsService sheetsService = SheetsServiceImpl.getInstance();
 
         ServletContextHandler contextHandler = new ServletContextHandler(ServletContextHandler.SESSIONS);
-        contextHandler.addServlet(new ServletHolder(new getScheduleServlet(sheetsService)), "/schedule");
+        contextHandler.addServlet(new ServletHolder(new GetScheduleServlet(sheetsService)), "/schedule");
+        contextHandler.addServlet(new ServletHolder(new UpdateServlet(sheetsService)), "/update");
 
         ResourceHandler resourceHandler = new ResourceHandler();
-        resourceHandler.setResourceBase("src/main/web");
+        resourceHandler.setResourceBase("web");
 
         HandlerList handlers = new HandlerList();
         handlers.setHandlers(new Handler[] {resourceHandler, contextHandler});

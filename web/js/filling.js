@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
     if (xhr.status === 200) {
         var json = JSON.parse(xhr.responseText);
     }
-
     var from = json['toOffice'];
     var firstList = document.getElementsByClassName('curTimetable')[0];
 
@@ -87,9 +86,12 @@ document.addEventListener('DOMContentLoaded', function (e) {
 	var o = 0;
     if (noneBus){
 	    var element = document.createElement("li");
-		element.appendChild(document.createTextNode("Сегодня нет большени одного рейса :("));
+		element.appendChild(document.createTextNode("Сегодня нет больше ни одного рейса :("));
 		secondList.appendChild(element);
     }
+    xhr.open('GET', 'http://localhost:8081/update', false);
+    xhr.send();
+    xhr.close();
 });
 
 
