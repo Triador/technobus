@@ -35,81 +35,49 @@ function changeLocale(loc){
             var str = element[i].innerText.substring(0,6);
             if (loc === 'en'){
                 var index = element[i].innerText.indexOf("пн");
-                if (index != -1){
-                    str += 'Mon';
-                    comma = true;
-                }
-                index = element[i].innerText.indexOf("Mon");
-                if (index != -1){
+                var index1 = element[i].innerText.indexOf("Mon");
+                if ((index != -1) || (index1 != -1)){
                     str += 'Mon';
                     comma = true;
                 }
                 index = element[i].innerText.indexOf("вт");
-                if (index != -1){
+                index1 = element[i].innerText.indexOf("Tue");
+                if ((index != -1) || (index1 != -1)){
                     if (comma) str += ',';
                     else comma = true;
                     str += 'Tue';
-                }
-                index = element[i].innerText.indexOf("Tue");
-                if (index != -1){
-                    str += 'Tue';
-                    comma = true;
                 }
                 index = element[i].innerText.indexOf("ср");
-                if (index != -1){
-                    if (comma) str += ',';
-                    else comma = true;
-                    str += 'Wed';
-                }
-                index = element[i].innerText.indexOf("Wed");
-                if (index != -1){
+                index1 = element[i].innerText.indexOf("Wed");
+                if ((index != -1) || (index1 != -1)){
                     if (comma) str += ',';
                     else comma = true;
                     str += 'Wed';
                 }
                 index = element[i].innerText.indexOf("чт");
-                if (index != -1){
-                    if (comma) str += ',';
-                    else comma = true;
-                    str += 'Thu';
-                }
-                index = element[i].innerText.indexOf("Thu");
-                if (index != -1){
+                index1 = element[i].innerText.indexOf("Thu");
+                if ((index != -1) || (index1 != -1)){
                     if (comma) str += ',';
                     else comma = true;
                     str += 'Thu';
                 }
                 index = element[i].innerText.indexOf("пт");
-                if (index != -1){
+                index1 = element[i].innerText.indexOf("Fri");
+                if ((index != -1) || (index1 != -1)){
                     if (comma) str += ',';
                     else comma = true;
                     str += 'Fri';
                 }
-                index = element[i].innerText.indexOf("Fri");
-                if (index != -1){
-                    if (comma) str += ',';
-                    else comma = true;
-                    str += 'Fri';
-                }
-                index = element[i].innerText.indexOf("сб");
-                if (index != -1){
-                    if (comma) str += ',';
-                    else comma = true;
-                    str += 'Sat';
-                }                index = element[i].innerText.indexOf("Sat");
-                if (index != -1){
+                index = element[i].innerText.indexOf("сб")
+                index1 = element[i].innerText.indexOf("Sat");
+                if ((index != -1) || (index1 != -1)){
                     if (comma) str += ',';
                     else comma = true;
                     str += 'Sat';
                 }
                 index = element[i].innerText.indexOf("вс");
-                if (index != -1){
-                    if (comma) str += ',';
-                    else comma = true;
-                    str += 'Sun';
-                }
-                index = element[i].innerText.indexOf("Sun");
-                if (index != -1){
+                index1 = element[i].innerText.indexOf("Sun");
+                if ((index != -1) || (index1 != -1)){
                     if (comma) str += ',';
                     else comma = true;
                     str += 'Sun';
@@ -117,77 +85,49 @@ function changeLocale(loc){
             }
             if (loc === 'ru'){
                 index = element[i].innerText.indexOf("Mon");
-                if (index != -1){
-                    str += 'пн';
-                    comma = true;
-                }
-                index = element[i].innerText.indexOf("пн");
-                if (index != -1){
+                index1 = element[i].innerText.indexOf("пн");
+                if ((index != -1) || (index1 != -1)){
                     str += 'пн';
                     comma = true;
                 }
                 index = element[i].innerText.indexOf("Tue");
-                if (index != -1){
-                    if (comma) str += ',';
-                    else comma = true;
-                    str += 'вт';
-                }
-                index = element[i].innerText.indexOf("вт");
-                if (index != -1){
+                index1 = element[i].innerText.indexOf("вт");
+                if ((index != -1) || (index1 != -1)){
                     if (comma) str += ',';
                     else comma = true;
                     str += 'вт';
                 }
                 index = element[i].innerText.indexOf("Wed");
-                if (index != -1){
-                    if (comma) str += ',';
-                    else comma = true;
-                    str += 'ср';
-                }
-                index = element[i].innerText.indexOf("ср");
-                if (index != -1){
+                index1 = element[i].innerText.indexOf("ср");
+                if ((index != -1) || (index1 != -1)){
                     if (comma) str += ',';
                     else comma = true;
                     str += 'ср';
                 }
                 index = element[i].innerText.indexOf("Thu");
-                if (index != -1){
+                index1 = element[i].innerText.indexOf("чт");
+                if ((index != -1) || (index1 != -1)){
                     if (comma) str += ',';
                     else comma = true;
                     str += 'чт';
                 }
                 index = element[i].innerText.indexOf("Fri");
-                if (index != -1){
-                    if (comma) str += ',';
-                    else comma = true;
-                    str += 'пт';
-                }
-                index = element[i].innerText.indexOf("пт");
-                if (index != -1){
+                index1 = element[i].innerText.indexOf("пт");
+                if ((index != -1) || (index1 != -1)){
                     if (comma) str += ',';
                     else comma = true;
                     str += 'пт';
                 }
                 index = element[i].innerText.indexOf("Sat");
-                if (index != -1){
-                    if (comma) str += ',';
-                    else comma = true;
-                    str += 'сб';
-                }
-                index = element[i].innerText.indexOf("сб");
-                if (index != -1){
+                index1 = element[i].innerText.indexOf("сб");
+                if ((index != -1) || (index1 != -1)){
                     if (comma) str += ',';
                     else comma = true;
                     str += 'сб';
                 }
                 index = element[i].innerText.indexOf("Sun");
-                if (index != -1){
-                    if (comma) str += ',';
-                    else comma = true;
-                    str += 'вс';
-                }
-                index = element[i].innerText.indexOf("вс");
-                if (index != -1){
+                index1 = element[i].innerText.indexOf("вс");
+                if ((index != -1) || (index1 != -1)){
                     if (comma) str += ',';
                     else comma = true;
                     str += 'вс';

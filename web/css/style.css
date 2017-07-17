@@ -141,14 +141,7 @@
 }
 
 .lang{
-    width: 30px;
+    width: 50px;
     height: 30px;
-    background-size: 100%;
-    border: none;
-    outline-color: #3f3f3f;
-    border-radius: 30px;
-}
-
-.lang:hover{
-    cursor: pointer;
+    margin-top:12px;
 }

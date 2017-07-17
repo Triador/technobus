@@ -61,11 +61,14 @@ document.addEventListener('DOMContentLoaded', function (e) {
         element.setAttribute("name", "noBus");
         firstList.appendChild(element);
     }
-    var txt = document.createElement("p");
-    txt.innerText = "Автобус ходит только по будним дням!";
-    txt.setAttribute("name",'onlyWeekDays');
-    txt.style = "margin-top: 20px; font-size: 20px; text-align: center";
-    fullList.appendChild(txt);
+    if ((day === 6) || (day === 7)){
+        var txt = document.createElement("p");
+        txt.innerText = "Автобус ходит только по будним дням!";
+        txt.setAttribute("name",'onlyWeekDays');
+        txt.style = "margin-top: 20px; font-size: 20px; text-align: center";
+        fullList.appendChild(txt);
+    }
+
 
     fullList = document.getElementsByClassName('column')[1];
     hourCounter = 8;
