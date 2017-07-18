@@ -64,5 +64,27 @@ document.addEventListener('DOMContentLoaded', function (e) {
         fullChedulePage.style.display = 'block';
         chedulePage.style.display = 'none';
     });
+
+    var scheduleNav = document.getElementById('schedule');
+    var placeMetroNav = document.getElementById('placeMetro');
+    var placeTechnopolisNav = document.getElementById('placeTechnopolis');
+    var fullScheduleNav = document.getElementById('fullChedule');
+
+    scheduleNav.addEventListener('click',function () {
+        $('.collapse').collapse('hide');
+    });
+    placeMetroNav.addEventListener('click',function () {
+        $('.collapse').collapse('hide');
+    });
+    placeTechnopolisNav.addEventListener('click',function () {
+        $('.collapse').collapse('hide');
+    });
+    fullScheduleNav.addEventListener('click',function () {
+        $('.collapse').collapse('hide');
+    });
+
 });
+
+
+
 
