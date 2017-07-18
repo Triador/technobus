@@ -26,14 +26,14 @@
     <script type="text/javascript" src="js/nextBus.js"></script>
     <script type="text/javascript" src="js/lang.js"></script>
 </head>
-<body>
+<body  style = "min-width: 410px;">
 <div class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
+  <div class="container-fluid">
       <div class = "row">
-          <div class = "col-md-1 col-sm-1 col-xs-1 " style = "width: 15%;">
-              <img src = "images/logo.PNG" style = "padding-top:15px;"/>
+          <div class = "col-md-3 col-sm-2 col-xs-3 ">
+              <img src = "images/logo.PNG"  id = "logo" style="padding-top:10px; padding-bottom: 10px;"/>
           </div>
-          <div class = "col-md-10 col-sm-10 col-xs-10" style = "width: 70%;">
+          <div class = "col-md-6 col-sm-8 col-xs-7">
               <div class="navbar-header">
                   <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#responsive-menu">
                       <!--<span class = "sr-only">Открыть навигацию</span>-->
@@ -44,10 +44,7 @@
                   <!--<a class = "navbar-brand" href = "#"><img src = "images/logo.PNG"/></a>-->
               </div>
               <div class = "collapse navbar-collapse" id="responsive-menu">
-                  <div class = "col-md-1 col-sm-1 col-xs-1 text-center">
-
-                  </div>
-                  <div class = "col-md-10 col-sm-10 col-xs-10 col-time text-center">
+                  <div class = "col-md-12 col-sm-12 col-xs-12 col-time text-center">
                       <div class = "col-time-content">
                           <ul class = "nav navbar-nav">
                               <li><a href="#" id = "schedule" name = "scheduleMenu">Расписание</a></li>
@@ -64,10 +61,9 @@
                           </ul>
                       </div>
                   </div>
-                  <div class = "col-md-1 col-sm-1 col-xs-1"></div>
               </div>
           </div>
-          <div class = "col-md-1 col-sm-1 col-xs-1" style = "width: 15%;">
+          <div class = "col-md-3 col-sm-2 col-xs-2 text-right" >
               <div class="btn-group-vertical" style = 'margin-top: 5px;'>
                   <button type="button" class="btn btn-primary btn-xs" onclick = "changeLocale('en')">EN</button>
                   <button type="button" class="btn btn-primary btn-xs" onclick = "changeLocale('ru')">RU</button>

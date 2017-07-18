@@ -1,6 +1,4 @@
 .nav > li {
-    margin-left: 50px;
-    margin-right: 25px;
 }
 
 .nav-tabs > li, .nav-pills > li {
@@ -58,7 +56,7 @@
 
 @media only screen and (max-width : 770px) {
     .nav > li {
-        margin-left: 15px;
+        /*margin-left: 15px;*/
     }
 }
 
