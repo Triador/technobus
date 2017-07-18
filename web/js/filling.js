@@ -30,7 +30,21 @@ document.addEventListener('DOMContentLoaded', function (e) {
         var mask1 = mask & day;
         if (mask1 === day){
             var element1 = document.createElement("a");
-            element1.id = "to" + time;
+            var isNextFinded = false;
+            var next = 1;
+            while (!isNextFinded && (next+i != from.length)){
+                    var time2 = from[i+next]["time"];
+                    var mask2 = from[i+next]["mask"];
+                    mask1 = mask2 & day;
+                    if (mask1 === day){
+                        element1.id = "to" + from[i+next]["time"];
+                        isNextFinded = true;
+                    }
+                    else{
+                        next++;
+                    }
+            }
+
             element = document.createElement("li");
              // parsing time from json
             var arr = time.split(':');
@@ -87,7 +101,21 @@ document.addEventListener('DOMContentLoaded', function (e) {
 		if (mask1 === day){
 			element = document.createElement("li");
             element1 = document.createElement("a");
-            element1.id = "from" + time;
+
+            isNextFinded = false;
+            next = 1;
+            while (!isNextFinded && (next+i != to.length)){
+                time2 = to[i+next]["time"];
+                mask2 = to[i+next]["mask"];
+                mask1 = mask2 & day;
+                if (mask1 === day){
+                    element1.id = "from" + to[i+next]["time"];
+                    isNextFinded = true;
+                }
+                else{
+                    next++;
+                }
+            }
 			arr = time.split(':');
 			if (parseInt(arr[0]) < hours ||
 				(parseInt(arr[0]) === hours && (arr[1] < minutes))) {
