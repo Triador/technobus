@@ -2,7 +2,6 @@ var nextBusTo;
 var nextBusFrom;
 
 document.addEventListener('DOMContentLoaded', function (e) {
-
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'http://localhost:8081/schedule', false);
     xhr.send();
@@ -28,12 +27,18 @@ document.addEventListener('DOMContentLoaded', function (e) {
         var time = from[i]["time"];
         var mask = parseInt(from[i]["mask"]);
         var mask1 = mask & day;
-        if (mask1 === day){
+        if (mask1 === day) {
             var element1 = document.createElement("a");
             element1.id = "to" + time;
             element = document.createElement("li");
-             // parsing time from json
+            element.setAttribute("itemToMetro", i + '');
+
             var arr = time.split(':');
+            var delay = parseInt(arr[0] - hours) * 60 * 60 * 1000
+                + parseInt(arr[1] - minutes) * 60 * 1000;
+            test(i, delay, "to");
+
+             // parsing time from json
             if (parseInt(arr[0]) < hours ||
                 (parseInt(arr[0]) === hours && (arr[1] < minutes))) {
                     element.classList.add('older');
@@ -85,7 +90,13 @@ document.addEventListener('DOMContentLoaded', function (e) {
 			element = document.createElement("li");
             element1 = document.createElement("a");
             element1.id = "from" + time;
-			arr = time.split(':');
+            element.setAttribute("itemFromPolis", i + '');
+
+            arr = time.split(':');
+            delay = parseInt(arr[0] - hours) * 60 * 60 * 1000
+                + parseInt(arr[1] - minutes) * 60 * 1000;
+            test(i, delay, "from");
+
 			if (parseInt(arr[0]) < hours ||
 				(parseInt(arr[0]) === hours && (arr[1] < minutes))) {
 				element.classList.add('older');
@@ -128,7 +139,7 @@ function toFullPage(list, time, mask, hourCounter, row){
     }
     var box = document.createElement("div");
     box.className = "timeBox";
-    if (mask == 31){
+    if (mask === 31){
         box.appendChild(document.createTextNode(time));
     }
     else{
@@ -137,7 +148,7 @@ function toFullPage(list, time, mask, hourCounter, row){
         for (var i = 1; i <= 7; i++){
             var day = getDayMask(i);
             var mask1 = day & mask;
-            if (mask1 == day){
+            if (mask1 === day){
                 if (!first) days += ", ";
                 days += getDay(day);
                 first = false;
@@ -205,4 +216,22 @@ function getDayMask(day) {
             day1 = 64;
     }
     return day1;
+}
+
+function test(arg, delay, str) {
+    console.log("will be updated with delay " + delay + " element " + arg);
+    setTimeout(function() {
+        var item;
+
+        if (str === "to") {
+            item = document.querySelectorAll(
+                //"[itemToMetro='5']")[0];
+                "[itemToMetro='" + arg + "']")[0];
+        } else {
+            item = document.querySelectorAll(
+                "[itemFromPolis='" + arg + "']")[0];
+        }
+
+        item.classList.add('older');
+    }, delay);
 }
