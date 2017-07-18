@@ -29,7 +29,21 @@ document.addEventListener('DOMContentLoaded', function (e) {
         var mask1 = mask & day;
         if (mask1 === day) {
             var element1 = document.createElement("a");
-            element1.id = "to" + time;
+            var isNextFind = false;
+            var next = 1;
+            while (!isNextFind && (next+i != from.length)){
+                    var time2 = from[i+next]["time"];
+                    var mask2 = from[i+next]["mask"];
+                    mask1 = mask2 & day;
+                    if (mask1 === day){
+                        element1.id = "to" + from[i+next]["time"];
+                        isNextFind = true;
+                    }
+                    else{
+                        next++;
+                    }
+            }
+
             element = document.createElement("li");
             element.setAttribute("itemToMetro", i + '');
 
@@ -66,11 +80,14 @@ document.addEventListener('DOMContentLoaded', function (e) {
         element.setAttribute("name", "noBus");
         firstList.appendChild(element);
     }
-    var txt = document.createElement("p");
-    txt.innerText = "Автобус ходит только по будним дням!";
-    txt.setAttribute("name",'onlyWeekDays');
-    txt.style = "margin-top: 20px; font-size: 20px; text-align: center";
-    fullList.appendChild(txt);
+    if ((day === 6) || (day === 7)){
+        var txt = document.createElement("p");
+        txt.innerText = "Автобус ходит только по будним дням!";
+        txt.setAttribute("name",'onlyWeekDays');
+        txt.style = "margin-top: 20px; font-size: 20px; text-align: center";
+        fullList.appendChild(txt);
+    }
+
 
     fullList = document.getElementsByClassName('column')[1];
     hourCounter = 8;
@@ -89,13 +106,29 @@ document.addEventListener('DOMContentLoaded', function (e) {
 		if (mask1 === day){
 			element = document.createElement("li");
             element1 = document.createElement("a");
-            element1.id = "from" + time;
+
             element.setAttribute("itemFromPolis", i + '');
 
             arr = time.split(':');
             delay = parseInt(arr[0] - hours) * 60 * 60 * 1000
                 + parseInt(arr[1] - minutes) * 60 * 1000;
             test(i, delay, "from");
+
+            isNextFind = false;
+            next = 1;
+            while (!isNextFind && (next+i != to.length)){
+                time2 = to[i+next]["time"];
+                mask2 = to[i+next]["mask"];
+                mask1 = mask2 & day;
+                if (mask1 === day){
+                    element1.id = "from" + to[i+next]["time"];
+                    isNextFind = true;
+                }
+                else{
+                    next++;
+                }
+            }
+			arr = time.split(':');
 
 			if (parseInt(arr[0]) < hours ||
 				(parseInt(arr[0]) === hours && (arr[1] < minutes))) {

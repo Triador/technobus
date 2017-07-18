@@ -1,6 +1,4 @@
 .nav > li {
-    margin-left: 50px;
-    margin-right: 25px;
 }
 
 .nav-tabs > li, .nav-pills > li {
@@ -25,7 +23,7 @@
 
 .curTimetable {
     list-style: none;
-    height: 63vh;
+    height: 61vh;
     overflow-y: scroll;
 }
 
@@ -58,7 +56,7 @@
 
 @media only screen and (max-width : 770px) {
     .nav > li {
-        margin-left: 15px;
+        /*margin-left: 15px;*/
     }
 }
 
@@ -141,14 +139,7 @@
 }
 
 .lang{
-    width: 30px;
+    width: 50px;
     height: 30px;
-    background-size: 100%;
-    border: none;
-    outline-color: #3f3f3f;
-    border-radius: 30px;
-}
-
-.lang:hover{
-    cursor: pointer;
+    margin-top:12px;
 }
