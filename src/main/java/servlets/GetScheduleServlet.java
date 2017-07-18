@@ -32,6 +32,6 @@ public class GetScheduleServlet extends HttpServlet {
         resp.getWriter().write(jsonObject.toJSONString());
         resp.getWriter().flush();
         resp.setStatus(HttpServletResponse.SC_OK);
-//
+
     }
 }
