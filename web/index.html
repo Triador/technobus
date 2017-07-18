@@ -30,10 +30,10 @@
 <div class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
       <div class = "row">
-          <div class = "col-md-3 col-sm-2 col-xs-3 ">
+          <div class = "col-md-1 col-sm-2 col-xs-3 text-left">
               <img src = "images/logo.PNG"  id = "logo" style="padding-top:10px; padding-bottom: 10px;"/>
           </div>
-          <div class = "col-md-6 col-sm-8 col-xs-7">
+          <div class = "col-md-9 col-sm-9 col-xs-7">
               <div class="navbar-header">
                   <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#responsive-menu">
                       <!--<span class = "sr-only">Открыть навигацию</span>-->
@@ -47,15 +47,15 @@
                   <div class = "col-md-12 col-sm-12 col-xs-12 col-time text-center">
                       <div class = "col-time-content">
                           <ul class = "nav navbar-nav">
-                              <li><a href="#" id = "schedule" name = "scheduleMenu">Расписание</a></li>
-                              <li class="dropdown">
+                              <li style = "width: 160px;"><a href="#" id = "schedule" name = "scheduleMenu">Расписание</a></li>
+                              <li style = "width: 160px;" class="dropdown">
                                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="place" name = "placeMenu">Место посадки</a>
                                   <ul class="dropdown-menu">
                                       <li><a href = "#" id = "placeMetro" name = "placeMetroMenu">Около метро "Московская"</a></li>
                                       <li><a href = "#" id = "placeTechnopolis" name = "placeOfficeMenu">Около Технополиса</a></li>
                                   </ul>
                               </li>
-                              <li class="dropdown">
+                              <li style = "width: 160px;">
                                   <a href="#" class = "dropdown-toggle" data-toggle="dropdown" id="fullChedule" name = "fullScheduleMenu">Полное расписание</a>
                               </li>
                           </ul>
@@ -63,7 +63,7 @@
                   </div>
               </div>
           </div>
-          <div class = "col-md-3 col-sm-2 col-xs-2 text-right" >
+          <div class = "col-md-1 col-sm-1 col-xs-2 text-right" >
               <div class="btn-group-vertical" style = 'margin-top: 5px;'>
                   <button type="button" class="btn btn-primary btn-xs" onclick = "changeLocale('en')">EN</button>
                   <button type="button" class="btn btn-primary btn-xs" onclick = "changeLocale('ru')">RU</button>
@@ -74,9 +74,9 @@
 </div>
 
 <aside id="chedulePage">
-    <div class="container tab-page" id="curTime">
+    <div class="container tab-page text-center" id="curTime">
         <div class="col-md-12">
-            <div class="row">
+            <div class="row" style = "margin-top: 5px;">
                 <!-- en clock widget start -->
                 <script type="text/javascript"> var css_file=document.createElement("link"); css_file.setAttribute("rel","stylesheet"); css_file.setAttribute("type","text/css"); css_file.setAttribute("href","//s.bookcdn.com//css/cl/bw-cl-150x100t.css"); document.getElementsByTagName("head")[0].appendChild(css_file); </script> <div id="tw_8_845372483" style = "display:none"><div style="width:150px; height:100px; margin: 0 auto;"><a href="http://www.booked.net/time/saint-petersburg-18398">Saint Petersburg</a><br/></div></div> <script type="text/javascript"> function setWidgetData_845372483(data){ if(typeof(data) != 'undefined' && data.results.length > 0) { for(var i = 0; i < data.results.length; ++i) { var objMainBlock = ''; var params = data.results[i]; objMainBlock = document.getElementById('tw_'+params.widget_type+'_'+params.widget_id); if(objMainBlock !== null) objMainBlock.innerHTML = params.html_code; } } } var clock_timer_845372483 = -1; </script> <script type="text/javascript" charset="UTF-8" src="https://widgets.booked.net/time/info?ver=2&domid=&type=8&id=845372483&scode=124&city_id=18398&wlangid=1&mode=1&details=0&background=rgba(0,0,0,0.6)&color=ffffff&add_background=ffffff&add_color=ffffff&head_color=ffffff&border=0&transparent=1"></script>
                 <!-- clock widget end -->
@@ -91,12 +91,12 @@
                 <!--</div>-->
             </div>
 
-            <div class="row">
-                <div class = "col-md-12">
+            <div class="row"  style = "margin-top: 5px;">
+                <div class = "col-md-12 text-center">
                     <div class = "tabs">
                         <ul class="nav nav-tabs">
-                            <li><button id = "toButton" onclick="changeNextBus('to')" class = "btn btn-default btn-outline text-center" style = "background: #373737; color:white;" name = "fromMetro">От метро</button></li>
-                            <li><button id = "fromButton" onclick="changeNextBus('from')" class = "btn btn-default btn-outline text-center" style = "background: white; color:#373737" name = "fromOffice">От офиса</button></li>
+                            <li style = "padding-right: 20px;"><button id = "toButton" onclick="changeNextBus('to')" class = "btn btn-default btn-outline text-center" style = "background: #373737; color:white;" name = "fromMetro">От метро</button></li>
+                            <li style = "padding-left: 20px;"><button id = "fromButton" onclick="changeNextBus('from')" class = "btn btn-default btn-outline text-center" style = "background: white; color:#373737" name = "fromOffice">От офиса</button></li>
                         </ul>
                         <div >
                             <div class = "col-time text-center" id="fromMetro">

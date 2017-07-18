@@ -23,7 +23,7 @@
 
 .curTimetable {
     list-style: none;
-    height: 63vh;
+    height: 61vh;
     overflow-y: scroll;
 }
 
