@@ -26,7 +26,6 @@ public class GetScheduleServlet extends HttpServlet {
         resp.setContentType("text/x-json;charset=UTF-8");
         resp.setHeader("Cache-Control", "no-cache");
         resp.setHeader("Access-Control-Allow-Origin", "*");
-
         JSONObject jsonObject = sheetsService.getSchedule();
 
         resp.getWriter().write(jsonObject.toJSONString());
