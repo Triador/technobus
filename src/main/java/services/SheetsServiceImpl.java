@@ -19,6 +19,8 @@ public class SheetsServiceImpl implements SheetsService {
             "https://spreadsheets.google.com/feeds/list/1yajaDHYL4pWad_cYUAab1C2ZypiYTDg2Vqxe3zmWDiI/1/public/values";
     public static final String FROM_OFFICE =
             "https://spreadsheets.google.com/feeds/list/1yajaDHYL4pWad_cYUAab1C2ZypiYTDg2Vqxe3zmWDiI/2/public/values";
+    public static final String COORDINATES =
+            "https://spreadsheets.google.com/feeds/list/1yajaDHYL4pWad_cYUAab1C2ZypiYTDg2Vqxe3zmWDiI/3/public/values";
 
     public static SheetsServiceImpl getInstance() {
         if (sheetsService1Impl == null) {
@@ -75,6 +77,8 @@ public class SheetsServiceImpl implements SheetsService {
             JSONObject jsonObject = new JSONObject();
             JSONArray fromJsonArray = getSchedule(FROM_OFFICE);
             JSONArray toJsonArray = getSchedule(TO_OFFICE);
+            JSONArray coordinates = getCoordinates();
+            jsonObject.put("Technopolis", coordinates);
             jsonObject.put("fromOffice", fromJsonArray);
             jsonObject.put("toOffice", toJsonArray);
             writer.write(jsonObject.toJSONString());
@@ -83,5 +87,26 @@ public class SheetsServiceImpl implements SheetsService {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public JSONArray getCoordinates() {
+        JSONArray jsonArray = new JSONArray();
+        try {
+            SpreadsheetService service = new SpreadsheetService("Schedule");
+            ListFeed listFeed = service.getFeed(new URL(COORDINATES), ListFeed.class);
+
+            for (ListEntry listElement : listFeed.getEntries()) {
+                CustomElementCollection cec = listElement.getCustomElements();
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put(cec.getValue("Name"), cec.getValue("Technopolis"));
+                jsonArray.add(jsonObject);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ServiceException e) {
+            e.printStackTrace();
+        }
+        return jsonArray;
     }
 }

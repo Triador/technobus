@@ -12,4 +12,5 @@ public interface SheetsService {
     JSONObject getSchedule() throws IOException;
     JSONArray getSchedule(String url);
     void updateJson();
+    JSONArray getCoordinates();
 }
